@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit,AfterViewInit {
         this.totalSelectedItems=item.length
        })
   }
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void { 
     
   }
 }
