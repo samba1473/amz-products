@@ -1,0 +1,12 @@
+<div class="sidebar"> 
+    <a  [routerLink]="['products']"  routerLinkActive="active-link">All Products</a>
+    <a  [routerLink]="['selectedProduct']" routerLinkActive="active-link">{{totalSelectedItems}} Added Items</a> 
+    <a >News</a>
+    <a  >Contact</a> 
+    <a >News</a>
+    <a >Contact</a>  
+</div>
+   
+  <div class="content">     
+    <router-outlet></router-outlet>
+  </div>
