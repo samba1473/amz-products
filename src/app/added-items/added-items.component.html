@@ -11,7 +11,7 @@
             <img [src]="item.images[i]" [alt]="item.alt" />
         </ng-template>
       </p-galleria> -->
-      <img [src]="data.thumbnail" width="100px"> 
+      <img [src]="data.thumbnail" width="100px">
     </div>
     <div class="contentDiv"> 
       <h4>{{data.description}}</h4>
@@ -19,10 +19,10 @@
       <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
       <p>Get it by <b>Thursday, December 22</b></p>
       <p>FREE Delivery by Amazon</p>           
-      <button pButton type="button" class="p-button-outlined" id="{{data.id}}"  (click)=" deleteItem($event)">Delete Item</button>
-
+      <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)=" deleteItem($event)">Delete Item</button>
     </div>                 
 </div>
 
 
 <p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Confirmation" styleClass="confirmPopup" icon="pi pi-exclamation-triangle"></p-confirmDialog>

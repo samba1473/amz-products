@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import {MessageService} from 'primeng/api';
+import {MessageService,ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-added-items',
@@ -10,7 +10,9 @@ import {MessageService} from 'primeng/api';
 export class AddedItemsComponent implements OnInit,AfterViewInit{
   constructor(
     private _selecteddata:ProductService,
-    private messageService:MessageService
+    private messageService:MessageService,
+    private confirmationService: ConfirmationService,
+
   ){}
 
   showData:any[]=[];
@@ -24,24 +26,26 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
           this.totalItems=show.length; 
         }else{
           this.noData="There is No Selected  Data"
-        }
-       
+        }       
         // console.log(show.length)
       }
     )
   }
   deleteItem(data:any){
-    const UserId = data.target.id;       
-    this._selecteddata.deleteSelectedData(UserId);                
-     this.messageService.add({severity:'info', summary:'Service Message', detail:'Via MessageService'});
-
-    this.showselectedData();
+    const UserId = data.target.id;    
+    this.confirmationService.confirm({
+      message: 'Are you sure   you want to Delete this Item ?',
+            accept: () => {
+              this._selecteddata.deleteSelectedData(UserId);
+              this.messageService.add({severity:'info', summary:'Item Deleted', detail:'Via MessageService'});         
+             this.showselectedData();
+            }
+    })     
   }
 ngOnInit(): void {
-  this.showselectedData();
- 
-  
+  this.showselectedData();  
 }
+
 ngAfterViewInit(): void {
   
 }

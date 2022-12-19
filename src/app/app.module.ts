@@ -15,6 +15,9 @@ import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AddedItemsComponent } from './added-items/added-items.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {GalleriaModule} from 'primeng/galleria';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +36,11 @@ import { AddedItemsComponent } from './added-items/added-items.component';
     NgbModule,
     ButtonModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule,
+    GalleriaModule
   ],
-  providers: [MessageService ],
+  providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

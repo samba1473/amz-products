@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ProductService } from '../product.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,8 @@ export class ProductsComponent {
     private _productSerc:ProductService, 
     private http:HttpClient, 
     private messageService: MessageService,
-    public rout:Router
+    public rout:Router,
+    private confirmationService: ConfirmationService
     ) {
     this.cities = [
       {name: 'All Products'},
@@ -44,7 +45,26 @@ export class ProductsComponent {
   UserId: any;
   addedData:any[]=[];
   displayMaximizable: boolean=false;
-  _selectedDataUrl="http://localhost:3000/selectedItems"
+  _selectedDataUrl="http://localhost:3000/selectedItems/"
+
+  responsiveOptions2:any[] = [
+    {
+        breakpoint: '1500px',
+        numVisible: 5
+    },
+    {
+        breakpoint: '1024px',
+        numVisible: 3
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 2
+    },
+    {
+        breakpoint: '560px',
+        numVisible: 1
+    }
+];
 
   getProductData(){
     this._productSerc.gaeProductData().subscribe(res=>{
@@ -71,58 +91,49 @@ export class ProductsComponent {
               //     return acc;
               //   }
               // }, []);
-
+              
               const seen = new Set();
               this.productsData = this.productsData.filter(el => {
                 this.duplicate = seen.has(el.id);
                 seen.add(el.id);
                 // this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
                 return !this.duplicate;
+
               }); 
+               
           }else if(this.myForm.value.filterProduct === 'All Products'){
             this.productsData.push(item);           
           }
+          
       }) 
        
     })   
     this.brandName=this.myForm.value.filterProduct
   }
 
+ 
 
-
-
-  addData(event:any)
-  {
-    	this.UserId = event.target.id;
-    //  console.log(this.UserId);
+  addData(event:any)  {
+    	this.UserId = event.target.id; 
      this._productSerc.gaeProductData().subscribe(res=>{
-      res.find((ee:any)=>{
+      res.find((ee:any)=>{ 
         if(this.UserId == ee.id ){
-          // console.log("datata",this.UserId);
-          // this.addedData.push(ee);
-          this.http.post(this._selectedDataUrl,ee).subscribe(
-            data=>{               
-              this.messageService.add({severity:'success', summary:'Item Added Successfully', detail:'Via MessageService'});
-            },
-            error=>{
-              this.messageService.add({severity:'error', summary:'This item Already Added', detail:'Via MessageService'});
-            }
-          )
-
-          // this._productSerc.selectedData=this.addedData;
-          // const seen = new Set();
-          //     this.addedData = this.addedData.filter(el => {
-          //       this.duplicate = seen.has(el.id);
-          //       seen.add(el.id);
-          //       return !this.duplicate;               
-          //     }); 
-
-              // console.log(this.addedData);
+            this.confirmationService.confirm({
+              message: 'Are you sure   you want to Add this Item ?',
+              accept: () => {
+                this.http.post(this._selectedDataUrl,ee).subscribe(
+                  data=>{ 
+                    this.messageService.add({severity:'success', summary:'Item Added Successfully', detail:'Via MessageService'});
+                  },
+                  error=>{
+                    this.messageService.add({severity:'error', summary:'This item Already Added', detail:'Via MessageService'});
+                  }
+                )
+              }
+            }); 
         }
       })
      })
-     
-    
   }
   showMaximizableDialog() {
     // console.log(this.addedData.length);

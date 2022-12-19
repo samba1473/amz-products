@@ -555,41 +555,6 @@
   ],
   "selectedItems": [
     {
-      "id": 5,
-      "title": "Huawei P30",
-      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-      "price": 499,
-      "discountPercentage": 10.58,
-      "rating": 4.09,
-      "stock": 32,
-      "brand": "Huawei",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/5/1.jpg",
-        "https://i.dummyjson.com/data/products/5/2.jpg",
-        "https://i.dummyjson.com/data/products/5/3.jpg"
-      ]
-    },
-    {
-      "id": 11,
-      "title": "perfume Oil",
-      "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
-      "price": 13,
-      "discountPercentage": 8.4,
-      "rating": 4.26,
-      "stock": 65,
-      "brand": "Impression of Acqua Di Gio",
-      "category": "fragrances",
-      "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/11/1.jpg",
-        "https://i.dummyjson.com/data/products/11/2.jpg",
-        "https://i.dummyjson.com/data/products/11/3.jpg",
-        "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
-      ]
-    },
-    {
       "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
@@ -625,6 +590,53 @@
         "https://i.dummyjson.com/data/products/2/3.jpg",
         "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
       ]
+    }
+  ],
+  "userDetails": [
+    {
+      "id": 1,
+      "fname": "g",
+      "lname": "samba",
+      "email": "samba@gmail.com",
+      "mobile": 988765432,
+      "status": "active",
+      "password": "samba@1473"
+    },
+    {
+      "fname": "hgsdcs",
+      "lname": "sdsds",
+      "email": "sdsd",
+      "password": "sss",
+      "mobile": "1222",
+      "status": "1212",
+      "id": 2
+    },
+    {
+      "fname": "hgsdcs",
+      "lname": "werfrfwsd",
+      "email": "ascfascdas",
+      "password": "sdsdvsdv",
+      "mobile": "345678",
+      "status": "435",
+      "id": 3
+    },
+    {
+      "fname": "wsrgfvdc",
+      "lname": "szdvxc ",
+      "email": "szdcv ",
+      "password": "sfbdbgf dxvf",
+      "mobile": "345678",
+      "status": "sdfvxc",
+      "id": 4
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "email": "",
+      "password": "",
+      "mobile": "",
+      "status": "",
+      "id": 5
     }
   ]
 }

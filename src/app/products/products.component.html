@@ -21,21 +21,26 @@
 <div style="display:contents">
   <div class="row">
       <div class="cardDiv" *ngFor="let data of productsData;  let i = index" >       
-          <div class="imagesDiv">
-            <!-- <p-galleria [value]="data.images">
-              <ng-template pTemplate="item" let-item>
-                  <img [src]="item.images[i]" [alt]="item.alt" />
+          <!-- <div class="imagesDiv"  *ngFor="let ddd of data.images;let k=index"> -->
+
+            <!-- <p-galleria [value]="data.images" >
+              <ng-template pTemplate="item" let-kkkk  >
+                  <img src="{{data.images[k]}}" [alt]="kkkk.alt" />
               </ng-template>
-            </p-galleria> -->
-            <img [src]="data.thumbnail" width="100px"> 
-          </div>
+            </p-galleria>  
+
+              <img src="{{data.images[k]}}" width="100px">  
+          </div> -->
+            <img src="{{data.thumbnail}}" width="100%">
+            
+          
           <div class="contentDiv"> 
             <h4>{{data.description}}</h4>
             <span class="limitedTimeDeal">Limited Time Deal</span>
             <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
             <p>Get it by <b>Thursday, December 22</b></p>
             <p>FREE Delivery by Amazon</p>           
-            <button pButton type="button" class="p-button-outlined" id="{{data.id}}"  (click)=" addData($event)">Added to selectd List</button>
+            <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)=" addData($event)">Added to selectd List</button>
           </div>                 
       </div>
   </div>
@@ -44,3 +49,4 @@
  
 
 <p-toast position="top-right"></p-toast>
+<p-confirmDialog styleClass="confirmPopup" header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
