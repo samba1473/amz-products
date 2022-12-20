@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl,FormControlName,FormGroup } from '@angular/forms';
+import { FormControl,FormControlName,FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {MessageService,ConfirmationService} from 'primeng/api';
+import { ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private route:Router, private http:HttpClient, private messageService:MessageService,){}
+  val: number ;
+
+  constructor(
+    private route:Router, 
+    private http:HttpClient, 
+    private messageService:MessageService,
+    private fb: FormBuilder
+    ){}
 
   slidePosition:boolean=false; 
 
@@ -22,17 +31,17 @@ registerSlide(){
 
 
 loginform=new FormGroup({
-  email:new FormControl(''),
-  password:new FormControl('')
+  email:new FormControl('',[Validators.required,Validators.minLength(4)]),
+  password:new FormControl('',[Validators.required,Validators.minLength(4)])
 })
 
 regForm=new FormGroup({
-  fname:new FormControl(''),
+  fname:new FormControl('',[Validators.required,Validators.minLength(4)]),
   lname:new FormControl(''),
-  email:new FormControl(''),
-  password:new FormControl(''),
-  mobile:new FormControl(''),
-  status:new FormControl(''),  
+  email:new FormControl('',[Validators.required,Validators.minLength(4),Validators.email]),
+  password:new FormControl('',[Validators.required,Validators.minLength(4)]),
+  mobile:new FormControl('',[Validators.required,Validators.minLength(4)]),
+  status:new FormControl('',[Validators.required,Validators.minLength(4)]),  
 })
 
 loginsubmit(){
@@ -47,7 +56,7 @@ loginsubmit(){
         if(user){
           localStorage.setItem("email",this.loginform.value["email"]);
           localStorage.setItem("pwd",this.loginform.value["pwd"]);
-          this.route.navigate(["home"]) 
+          this.route.navigate(["home/products"]) 
           this.messageService.add({severity:'success', summary:'User Login Successfully', detail:'Via MessageService'});
         
           this.loginform.reset();

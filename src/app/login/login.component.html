@@ -1,4 +1,4 @@
- <button class="btn btn-primary">Click</button>
+
 <section class="h-100 gradient-form" style="background-color: #eee;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -18,16 +18,20 @@
                     <p>Please login to your account</p>
   
                     <div class="form-outline mb-4">
-                      <input type="email"   class="form-control"
-                        placeholder="Phone number or email address"  placeholder ="UserName" formControlName="email"/>
+                      <span class="requiredStar">*</span>
+                      <!-- <input type="email"   class="form-control"
+                        placeholder="Phone number or email address"  placeholder ="UserName" formControlName="email"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="UserName"   formControlName="email" >  
                     </div>
   
                     <div class="form-outline mb-4">
-                      <input type="password" class="form-control" placeholder="Password" formControlName="password"/>
+                      <span class="requiredStar">*</span>
+                      <!-- <input type="password" class="form-control" placeholder="Password" formControlName="password"/> -->
+                      <input type="text" pInputText class="p-inputtext-sm" placeholder="Password"   formControlName="password" >  
                     </div>
   
                     <div class="text-center pt-1 mb-1 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >Log
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="!loginform.valid" type="submit" >Log
                         in</button> &nbsp;
                       <a class="text-muted" href="#!">Forgot password?</a>
                     </div>
@@ -44,42 +48,50 @@
               <div class="col-lg-6 ">
                 <div class="card-body p-md-3 mx-md-4">  
                     <div class="text-center">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                        style="width: 185px;" alt="logo">
-                      <h4 class="mt-1 mb-3 pb-1">We are The Lotus Team</h4>
+                      <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                        style="width: 185px;" alt="logo">-->
+                      <h4 class="mt-1 mb-3 pb-1">We are The Lotus Team</h4> 
                     </div>
     
                     <form [formGroup]="regForm" (ngSubmit)="regformSubmit()">
                       <p>Please login to your account</p>
     
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="fname" class="form-control" placeholder="First Name" formControlName="fname"/>
                       </div>
                 
                       <!-- Username input -->
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="lname" class="form-control" placeholder="Last Name" formControlName="lname"/>
                       </div>
 
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="email" class="form-control" placeholder="Email" formControlName="email"/>
                       </div>
                 
                       <!-- Username input -->
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="password" class="form-control" placeholder="Possword" formControlName="password"/>
                       </div>
 
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="mobile" class="form-control" placeholder="mobile" formControlName="mobile"/>
                       </div>
 
                       <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>
                         <input type="text" id="ststus" class="form-control" placeholder="status" formControlName="status"/>
                       </div>
     
                       <div class="text-center pt-1 mb-1 pb-1">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >Register</button> &nbsp;
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="!regForm.valid" type="submit" >Register</button> &nbsp;
+                        
+                        
                         <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
     

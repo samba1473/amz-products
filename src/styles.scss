@@ -12,8 +12,7 @@
 }
 .relativePosition{
     position: relative;
-}
- 
+} 
   
 .cardDiv{
     align-items: center;
@@ -63,7 +62,28 @@
     font-size: 14px;
     font-weight: 500;
 }
- 
+.card-body{
+    .form-outline{         
+        position: relative;
+        .requiredStar{           
+            color: #d6397b;
+            font-size: 16px;
+            font-weight: bold;
+            position: absolute;
+            left: -10px;
+            top: -5px;
+        }
+    }
+}
+.p-inputtext {
+    width:100%
+}
+.primeNumberBox{
+    width:100%;
+    span{
+        width:100%
+    }
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 

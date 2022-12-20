@@ -3,13 +3,16 @@
  <!-- <select [(ngModel)]="selectedCity"  (change)="valueSelected()">
     <option *ngFor="let name of cities">{{name.name}}</option>
  </select> -->
+
+<!-- <form [formGroup]="myForm" (ngSubmit)="filtersearch()">
+  <p-dropdown [options]="cities" optionLabel="name" formControlName="filterProduct" (change)="valueSelected()"></p-dropdown>
+</form> -->
  <form [formGroup]="myForm" (ngSubmit)="filtersearch()">
 	<select name="Price" formControlName="filterProduct"  (change)="valueSelected()">
     <option *ngFor="let name of cities; let i = index;">
       {{ name.name}}
     </option>
-  </select>
-  <!-- <button type="submit">Search</button> -->
+  </select> 
 </form>
 
 <br>

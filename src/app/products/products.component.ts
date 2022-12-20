@@ -76,6 +76,8 @@ export class ProductsComponent {
   }  
     
   valueSelected(){
+    console.log("helllo samba");
+    
     this.productsData =[];
     this._productSerc.gaeProductData().subscribe((res: any[])=>{     
       res.filter(item=>{

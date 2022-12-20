@@ -18,6 +18,9 @@ import { AddedItemsComponent } from './added-items/added-items.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {GalleriaModule} from 'primeng/galleria';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,10 @@ import {GalleriaModule} from 'primeng/galleria';
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
-    GalleriaModule
+    GalleriaModule,
+    InputNumberModule,
+    InputTextModule,
+    DropdownModule
   ],
   providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]
