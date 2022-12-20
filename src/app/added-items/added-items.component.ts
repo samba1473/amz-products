@@ -18,14 +18,17 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
   showData:any[]=[];
   noData:any;
   totalItems:any;
+  show:boolean=false;
   showselectedData(){
     this._selecteddata.addselectedData().subscribe(
       show=>{
         if(show.length > 0 ){          
           this.showData=show;
-          this.totalItems=show.length; 
+          this.totalItems = show.length; 
+          this.show=true;
         }else{
           this.noData="There is No Selected  Data"
+          this.show=false;
         }       
         // console.log(show.length)
       }
@@ -40,7 +43,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
               this.messageService.add({severity:'info', summary:'Item Deleted', detail:'Via MessageService'});         
              this.showselectedData();
             }
-    })     
+    })
   }
 ngOnInit(): void {
   this.showselectedData();  

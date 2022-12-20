@@ -21,13 +21,23 @@ import {GalleriaModule} from 'primeng/galleria';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextModule} from 'primeng/inputtext';
 import {DropdownModule} from 'primeng/dropdown';
+import {SkeletonModule} from 'primeng/skeleton';
+import {PasswordModule} from 'primeng/password';
+import { DividerModule } from "primeng/divider";
+import {KeyFilterModule} from 'primeng/keyfilter';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {CarouselModule} from 'primeng/carousel'; 
+import {ToolbarModule} from 'primeng/toolbar';
+import { TopNavbarComponent } from './top-navbar/top-navbar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProductsComponent,
     LoginComponent,
-    AddedItemsComponent
+    AddedItemsComponent,
+    TopNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +54,14 @@ import {DropdownModule} from 'primeng/dropdown';
     GalleriaModule,
     InputNumberModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    SkeletonModule,
+    PasswordModule,
+    DividerModule,
+    KeyFilterModule,
+    CascadeSelectModule,
+    CarouselModule, 
+    ToolbarModule
   ],
   providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]

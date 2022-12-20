@@ -1,0 +1,16 @@
+<p-toolbar styleClass="topNavPosition">
+    <div class="p-toolbar-group-left">
+        <!-- <p-button label="New" icon="pi pi-plus"></p-button>
+        <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>            
+        <i class="pi pi-bars"></i> -->
+         <!-- <h2 class="brandName">{{brandName | uppercase}}</h2> -->
+    </div>
+    
+    <div class="p-toolbar-group-right topRightBtnsDivs">
+        <!-- <p-button icon="pi pi-search"></p-button>
+        <p-button icon="pi pi-cart-plus"  class="p-button-outlined"></p-button>
+        <p-button icon="pi pi-user"  class="p-button-outlined"></p-button> -->
+        <button pButton type="button" (click)="showselectedData()" label="{{totalAddeedItems}} Cart Items" icon="pi pi-cart-plus" class="p-button-outlined p-button-rounded p-button-success position-relative totalitemsBtn">  </button>
+        <button pButton type="button"  icon="pi pi-user-plus" class="p-button-outlined p-button-rounded"></button>
+    </div>
+  </p-toolbar>

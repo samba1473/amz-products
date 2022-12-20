@@ -12,6 +12,7 @@ import { FormBuilder } from '@angular/forms'
 })
 export class LoginComponent {
   val: number ;
+  value4:string;
 
   constructor(
     private route:Router, 
@@ -31,7 +32,7 @@ registerSlide(){
 
 
 loginform=new FormGroup({
-  email:new FormControl('',[Validators.required,Validators.minLength(4)]),
+  email:new FormControl('',[Validators.required,Validators.minLength(4),Validators.email]),
   password:new FormControl('',[Validators.required,Validators.minLength(4)])
 })
 

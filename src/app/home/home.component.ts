@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit,AfterViewInit,DoCheck ,AfterContent
   totalSelectedItems:any;
   constructor(private _productServ:ProductService){
 
-  }
+  } 
   ngOnInit(): void {
        console.log(this._productServ.totalAddedItems)
        

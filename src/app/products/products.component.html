@@ -1,39 +1,24 @@
-<p>products works!</p>
- 
- <!-- <select [(ngModel)]="selectedCity"  (change)="valueSelected()">
-    <option *ngFor="let name of cities">{{name.name}}</option>
- </select> -->
-
-<!-- <form [formGroup]="myForm" (ngSubmit)="filtersearch()">
-  <p-dropdown [options]="cities" optionLabel="name" formControlName="filterProduct" (change)="valueSelected()"></p-dropdown>
-</form> -->
- <form [formGroup]="myForm" (ngSubmit)="filtersearch()">
-	<select name="Price" formControlName="filterProduct"  (change)="valueSelected()">
-    <option *ngFor="let name of cities; let i = index;">
-      {{ name.name}}
-    </option>
-  </select> 
-</form>
-
-<br>
-
-<div class="">
-    <h2>{{brandName | uppercase }}</h2>
+  
+<div class="d-flex justify-content-end align-items-center mb-3 mt-3 productsTopBrandSection">
+    <h2 class="brandName">{{brandName | uppercase }}</h2>
     <!-- <button pButton type="button"  (click)="showselectedData()" label="Show Added Items" class="p-button-text"><span class="additemShow" *ngIf="addedData.length > 0 ">{{addedData.length }}</span></button> -->
+    <form [formGroup]="myForm" >
+      <p-dropdown [options]="cities" optionLabel="name" formControlName="filterProduct" (onChange)="valueSelected()" styleClass="filterDropdown"></p-dropdown>
+    </form>
 </div>
 <div style="display:contents">
   <div class="row">
+    <div *ngIf="productsData">
       <div class="cardDiv" *ngFor="let data of productsData;  let i = index" >       
-          <!-- <div class="imagesDiv"  *ngFor="let ddd of data.images;let k=index"> -->
-
-            <!-- <p-galleria [value]="data.images" >
+          <!-- <div class="imagesDiv"  *ngFor="let ddd of data.images;let k=index">  
+             <p-galleria [value]="data.images" >
               <ng-template pTemplate="item" let-kkkk  >
                   <img src="{{data.images[k]}}" [alt]="kkkk.alt" />
               </ng-template>
             </p-galleria>  
-
               <img src="{{data.images[k]}}" width="100px">  
           </div> -->
+
             <img src="{{data.thumbnail}}" width="100%">
             
           
@@ -46,6 +31,22 @@
             <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)=" addData($event)">Added to selectd List</button>
           </div>                 
       </div>
+    </div>
+      <div *ngIf="!productsData">
+        <div class="cardDiv" *ngFor="let item of [].constructor(3)">       
+         
+            <p-skeleton width="300px" height="200px"></p-skeleton>
+          
+          <div class="contentDiv"> 
+            <p-skeleton width="500px" height="2rem"></p-skeleton>
+            <p-skeleton width="150px" height="2rem"></p-skeleton>
+            <p-skeleton width="100px" height="2rem"></p-skeleton><p-skeleton width="100px" height="1rem"></p-skeleton>
+            <p-skeleton width="200px" height="1.5rem"></p-skeleton>
+            <p-skeleton width="200px" height="1.5rem"></p-skeleton>          
+            <p-skeleton width="100px" height="2rem"></p-skeleton>
+          </div>                 
+      </div>
+      </div>
   </div>
 </div>
  
@@ -53,3 +54,5 @@
 
 <p-toast position="top-right"></p-toast>
 <p-confirmDialog styleClass="confirmPopup" header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+

@@ -27,11 +27,26 @@
                     <div class="form-outline mb-4">
                       <span class="requiredStar">*</span>
                       <!-- <input type="password" class="form-control" placeholder="Password" formControlName="password"/> -->
-                      <input type="text" pInputText class="p-inputtext-sm" placeholder="Password"   formControlName="password" >  
+                      <!-- <input type="text" pInputText class="p-inputtext-sm" placeholder="Password"   formControlName="password" >   -->
+                      <p-password [(ngModel)]="value4"  [toggleMask]="true" class="p-inputtext-sm"  formControlName="password" placeholder="Password">
+                        <ng-template pTemplate="header" >
+                          <h6>Pick a password</h6>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                          <p-divider></p-divider>
+                          <p class="p-mt-2">Suggestions</p>
+                          <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                            <li>At least one lowercase</li>
+                            <li>At least one uppercase</li>
+                            <li>At least one numeric</li>
+                            <li>Minimum 8 characters</li>
+                          </ul>
+                        </ng-template>
+                      </p-password>
                     </div>
   
                     <div class="text-center pt-1 mb-1 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="!loginform.valid" type="submit" >Log
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2" [disabled]="!loginform.valid" type="submit" >Log
                         in</button> &nbsp;
                       <a class="text-muted" href="#!">Forgot password?</a>
                     </div>
@@ -58,40 +73,61 @@
     
                       <div class="form-outline mb-2">
                         <span class="requiredStar">*</span>
-                        <input type="text" id="fname" class="form-control" placeholder="First Name" formControlName="fname"/>
+                        <!-- <input type="text" id="fname" class="form-control" placeholder="First Name" formControlName="fname"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="First Name"   formControlName="fname" >  
+
                       </div>
                 
                       <!-- Username input -->
                       <div class="form-outline mb-2">
                         <span class="requiredStar">*</span>
-                        <input type="text" id="lname" class="form-control" placeholder="Last Name" formControlName="lname"/>
+                        <!-- <input type="text" id="lname" class="form-control" placeholder="Last Name" formControlName="lname"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="Last Name"   formControlName="lname" >  
+                        
                       </div>
 
                       <div class="form-outline mb-2">
                         <span class="requiredStar">*</span>
-                        <input type="text" id="email" class="form-control" placeholder="Email" formControlName="email"/>
+                        <!-- <input type="text" id="email" class="form-control" placeholder="Email" formControlName="email"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="Email"   formControlName="email" >  
+                      
                       </div>
                 
                       <!-- Username input -->
                       <div class="form-outline mb-2">
                         <span class="requiredStar">*</span>
-                        <input type="text" id="password" class="form-control" placeholder="Possword" formControlName="password"/>
+                        <!-- <input type="text" id="password" class="form-control" placeholder="Possword" formControlName="password"/> -->
+                        <p-password [(ngModel)]="value4"  [toggleMask]="true" class="p-inputtext-sm"  formControlName="password" placeholder="Password">
+                          <ng-template pTemplate="header" >
+                            <h6>Pick a password</h6>
+                          </ng-template>
+                          <ng-template pTemplate="footer">
+                            <p-divider></p-divider>
+                            <p class="p-mt-2">Suggestions</p>
+                            <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                              <li>At least one lowercase</li>
+                              <li>At least one uppercase</li>
+                              <li>At least one numeric</li>
+                              <li>Minimum 8 characters</li>
+                            </ul>
+                          </ng-template>
+                        </p-password>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <span class="requiredStar">*</span>                        
+                        <!-- <input type="text" id="mobile" class="form-control" placeholder="mobile" formControlName="mobile"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="mobile"  pKeyFilter="int"  formControlName="mobile" >  
                       </div>
 
                       <div class="form-outline mb-2">
                         <span class="requiredStar">*</span>
-                        <input type="text" id="mobile" class="form-control" placeholder="mobile" formControlName="mobile"/>
-                      </div>
-
-                      <div class="form-outline mb-2">
-                        <span class="requiredStar">*</span>
-                        <input type="text" id="ststus" class="form-control" placeholder="status" formControlName="status"/>
+                        <!-- <input type="text" id="ststus" class="form-control" placeholder="status" formControlName="status"/> -->
+                        <input type="text" pInputText class="p-inputtext-sm" placeholder="status"   formControlName="status" >  
                       </div>
     
                       <div class="text-center pt-1 mb-1 pb-1">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="!regForm.valid" type="submit" >Register</button> &nbsp;
-                        
-                        
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2" [disabled]="!regForm.valid" type="submit" >Register</button> &nbsp;                        
                         <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
     
@@ -120,6 +156,6 @@
       </div>
     </div>
   </section>
-
+ 
 
   <p-toast position="top-right"></p-toast>

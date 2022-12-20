@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit ,DoCheck {
 
   constructor(
     private fb: FormBuilder, 
@@ -35,17 +35,18 @@ export class ProductsComponent {
     filterProduct: ['']
   })
   }
-
+  selectedCity: any;
   productsData:any[]=[]; 
   cities: any[]=[];  
   myForm: FormGroup; 
-  brandName=" All Products";
+  brandName="All Products";
   date=new Date(); 
   duplicate:any;
   UserId: any;
   addedData:any[]=[];
   displayMaximizable: boolean=false;
-  _selectedDataUrl="http://localhost:3000/selectedItems/"
+  _selectedDataUrl="http://localhost:3000/selectedItems/";
+  loadSkeleton: boolean = false;
 
   responsiveOptions2:any[] = [
     {
@@ -66,24 +67,26 @@ export class ProductsComponent {
     }
 ];
 
-  getProductData(){
-    this._productSerc.gaeProductData().subscribe(res=>{
+  async getProductData(){
+    await this._productSerc.gaeProductData().subscribe(res=>{
       this.productsData=res;
     })
+   // this.loadSkeleton = false;
   }
   filtersearch(){
     console.log(this.myForm.value);   
-  }  
-    
+  }
+      
   valueSelected(){
     console.log("helllo samba");
-    
+    // console.log(this.myForm.value)
     this.productsData =[];
+    this.loadSkeleton=true;
     this._productSerc.gaeProductData().subscribe((res: any[])=>{     
-      res.filter(item=>{
-        // console.log('item >>> ',item)
-          if( item.category === this.myForm.value.filterProduct)
+      res.filter(item=>{         
+          if( item.category === this.myForm.value.filterProduct.name)
           {
+            
               this.productsData.push(item);
               // this.productsData = this.productsData.reduce((acc, current) => {
               //   const x = acc.find(item => item.id === current.id);
@@ -100,17 +103,19 @@ export class ProductsComponent {
                 seen.add(el.id);
                 // this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
                 return !this.duplicate;
-
+                
               }); 
-               
-          }else if(this.myForm.value.filterProduct === 'All Products'){
-            this.productsData.push(item);           
-          }
-          
-      }) 
-       
+              this.loadSkeleton=false;
+          }else if(this.myForm.value.filterProduct.name === 'All Products'){
+            this.loadSkeleton= true;
+            this.productsData.push(item);  
+            this.loadSkeleton=false;         
+          }          
+      })       
     })   
-    this.brandName=this.myForm.value.filterProduct
+    this.brandName=this.myForm.value.filterProduct.name;
+    this._productSerc.brandName=this.brandName; 
+    
   }
 
  
@@ -145,17 +150,18 @@ export class ProductsComponent {
     //   this.displayMaximizable = false;
     //   alert("Please select Atleast One Item")
     // }  
-
-  
    
 }
 showselectedData(){
-  this.rout.navigate(["selectedProduct"])
+  this.rout.navigate(["home/selectedProduct"])
 }
   
-  ngOnInit(): void {
-    this.getProductData(); 
-    // this. valueSelected()
+  async ngOnInit() {
+    this.loadSkeleton=true
+    await this.getProductData();   
+    
   }
-
+  ngDoCheck(): void { 
+  }
+ 
 }

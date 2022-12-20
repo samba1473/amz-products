@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   selectedData:any;
+  brandName:any="ALL PRODUCTS"
   constructor(private http:HttpClient) { }
 
   private _url="http://localhost:3000/products/";

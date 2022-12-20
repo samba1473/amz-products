@@ -1,6 +1,9 @@
 <div class="sidebar"> 
+    <div class="logoImage">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp">
+    </div>
     <a  [routerLink]="['products']"  routerLinkActive="active-link">All Products</a>
-    <a  [routerLink]="['selectedProduct']" routerLinkActive="active-link">{{totalSelectedItems}} Added Items</a> 
+    <a  [routerLink]="['selectedProduct']" routerLinkActive="active-link" > Cart Items</a> 
     <a >News</a>
     <a  >Contact</a> 
     <a >News</a>
@@ -8,5 +11,6 @@
 </div>
    
   <div class="content">     
+    <app-top-navbar [totalAddeedItems]="totalSelectedItems" ></app-top-navbar>
     <router-outlet></router-outlet>
   </div>

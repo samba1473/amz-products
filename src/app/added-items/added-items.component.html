@@ -1,26 +1,35 @@
-<p>added-items works!</p>
+<!-- <p>added-items works!</p>
 
 {{noData}}
 
-<h3>Total Selected Items : {{totalItems}} </h3>
+<h3>Total Selected Items : {{totalItems}} </h3> -->
 
-<div class="cardDiv" *ngFor="let data of showData;  let i = index" id="{{data.id}}"  >       
-    <div class="imagesDiv">
-      <!-- <p-galleria [value]="data.images">
-        <ng-template pTemplate="item" let-item>
-            <img [src]="item.images[i]" [alt]="item.alt" />
-        </ng-template>
-      </p-galleria> -->
-      <img [src]="data.thumbnail" width="100px">
-    </div>
-    <div class="contentDiv"> 
-      <h4>{{data.description}}</h4>
-      <span class="limitedTimeDeal">Limited Time Deal</span>
-      <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
-      <p>Get it by <b>Thursday, December 22</b></p>
-      <p>FREE Delivery by Amazon</p>           
-      <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)=" deleteItem($event)">Delete Item</button>
-    </div>                 
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
+  <h2 class="brandName"> Cart Items    {{totalItems}}</h2>
+  
+</div>
+<div *ngIf="show">
+  <div class="cardDiv" *ngFor="let data of showData;  let i = index" id="{{data.id}}"  >       
+      <div class="imagesDiv">
+        <!-- <p-galleria [value]="data.images">
+          <ng-template pTemplate="item" let-item>
+              <img [src]="item.images[i]" [alt]="item.alt" />
+          </ng-template>
+        </p-galleria> -->
+        <img [src]="data.thumbnail" width="100px">
+      </div>
+      <div class="contentDiv"> 
+        <h4>{{data.description}}</h4>
+        <span class="limitedTimeDeal">Limited Time Deal</span>
+        <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
+        <p>Get it by <b>Thursday, December 22</b></p>
+        <p>FREE Delivery by Amazon</p>           
+        <button pButton type="button" class="p-button-outlined additemDeleteBtn" id="{{data.id}}" (click)=" deleteItem($event)">Delete Item</button>
+      </div>                 
+  </div>
+</div>
+<div *ngIf="!show">
+<h3>No Selected Items</h3>
 </div>
 
 
