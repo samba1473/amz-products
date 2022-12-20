@@ -29,7 +29,7 @@ import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {CarouselModule} from 'primeng/carousel'; 
 import {ToolbarModule} from 'primeng/toolbar';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
-
+import {RatingModule} from 'primeng/rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,8 @@ import { TopNavbarComponent } from './top-navbar/top-navbar.component';
     KeyFilterModule,
     CascadeSelectModule,
     CarouselModule, 
-    ToolbarModule
+    ToolbarModule,
+    RatingModule
   ],
   providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]

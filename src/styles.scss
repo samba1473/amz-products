@@ -142,7 +142,47 @@
     position: fixed;
     top: 29px;
     left: 233px;
-    z-index: 999999;    
+    z-index: 999;    
+}
+.highlitedPopup{
+    .cardDiv{
+        display: inherit;
+        margin-bottom: 0px;
+        box-shadow: none;
+        img{
+            margin-bottom: 20px;
+            width:100%
+        }
+        h5{
+            color: #de3da1;
+            position: absolute;
+            top: 38px;
+            left: 44px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .contentDiv {            
+            margin: 0px;
+            h4{
+                font-size: 20px;
+                margin-bottom: 15px;
+                color: #df3da1;
+            }
+            .priceColumn{
+                margin: 10px 0px;
+            }
+            td{
+                padding: 1px 20px;
+                font-size: 14px;
+            }
+        }
+        .AddhighliteBtn{
+            color: #ffffff;
+            background: #de3da1;
+            padding: 7px 25px;
+            border: none;
+        }
+    }
 }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

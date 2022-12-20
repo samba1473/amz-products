@@ -17,8 +17,7 @@
               </ng-template>
             </p-galleria>  
               <img src="{{data.images[k]}}" width="100px">  
-          </div> -->
-
+          </div> --> 
             <img src="{{data.thumbnail}}" width="100%">
             
           
@@ -28,7 +27,8 @@
             <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
             <p>Get it by <b>Thursday, December 22</b></p>
             <p>FREE Delivery by Amazon</p>           
-            <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)=" addData($event)">Added to selectd List</button>
+            <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)="viewMoreData($event)">View More</button>
+            <!-- <button pButton type="button" class="p-button-outlined" id="{{data.id}}" (click)="addData($event)">Added to selectd List</button> -->
           </div>                 
       </div>
     </div>
@@ -50,7 +50,58 @@
   </div>
 </div>
  
- 
+ <!--  Highlited Popup -->
+ <p-dialog   [(visible)]="displayMaximizable" styleClass="highlitedPopup" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <div class="cardDiv" *ngFor="let data of highlitedData;  let i = index" >     
+      <h5>{{data.title}}</h5>   
+        <div class="row">
+          <div class="col-md-12">
+              <ngb-carousel >
+                  <ng-template ngbSlide   *ngFor="let ddd of data.images;let k=index">
+                      <img class="img-fluid" src="{{data.images[k]}}" alt="Random first slide">                       
+                  </ng-template>                   
+              </ngb-carousel>
+          </div>
+        </div>
+
+      <div class="contentDiv"> 
+        <h4>{{data.description}}</h4>
+        <span class="limitedTimeDeal">Limited Time Deal</span>
+        <h3 class="priceColumn">{{data.price | currency}} <span>({{data.discountPercentage }} %)</span></h3>
+        <p>Get it by <b>Thursday, December 22</b></p>
+        <p>FREE Delivery by Amazon</p>       
+        <table>
+          <tr>
+            <td><b>Brand</b></td>
+            <td>{{data.brand}}</td>
+          </tr>
+          <tr>
+            <td><b>Category</b></td>
+            <td>{{data.category}}</td>
+          </tr>
+          <tr>
+            <td><b>Price</b></td>
+            <td>{{data.price}}</td>
+          </tr>
+          <tr>
+            <td><b>Rating</b></td>
+            <td>{{data.rating }}</td>
+          </tr>
+          <tr>
+            <td><b>Stock</b></td>
+            <td>{{data.stock }}</td>
+          </tr>
+        </table>
+        <div class="d-flex justify-content-end ">
+          <button pButton type="button" class="AddhighliteBtn" id="{{data.id}}" (click)="addData($event)">Added to selectd List</button>
+        </div>
+
+      </div>                 
+    </div>
+        
+</p-dialog>
+
 
 <p-toast position="top-right"></p-toast>
 <p-confirmDialog styleClass="confirmPopup" header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

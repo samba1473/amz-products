@@ -43,7 +43,9 @@ export class ProductsComponent implements OnInit ,DoCheck {
   date=new Date(); 
   duplicate:any;
   UserId: any;
+  viewMoreId:any;
   addedData:any[]=[];
+  highlitedData:any[]=[];
   displayMaximizable: boolean=false;
   _selectedDataUrl="http://localhost:3000/selectedItems/";
   loadSkeleton: boolean = false;
@@ -136,11 +138,13 @@ export class ProductsComponent implements OnInit ,DoCheck {
                     this.messageService.add({severity:'error', summary:'This item Already Added', detail:'Via MessageService'});
                   }
                 )
+                this.displayMaximizable=false;
               }
             }); 
         }
       })
      })
+     
   }
   showMaximizableDialog() {
     // console.log(this.addedData.length);
@@ -155,7 +159,21 @@ export class ProductsComponent implements OnInit ,DoCheck {
 showselectedData(){
   this.rout.navigate(["home/selectedProduct"])
 }
+viewMoreData(event:any){  
+  this.displayMaximizable=true;
+  this.viewMoreId = event.target.id; 
+  this.highlitedData=[]
+  // console.log(this.viewMoreId);
+  this._productSerc.gaeProductData().subscribe(res=>{
+    res.find((dd:any)=>{
+      if(dd.id == this.viewMoreId){
+        this.highlitedData.push(dd);
+        console.log(this.highlitedData);        
+      }
+    })
+  })
   
+}
   async ngOnInit() {
     this.loadSkeleton=true
     await this.getProductData();   
