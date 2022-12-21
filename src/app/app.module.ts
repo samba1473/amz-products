@@ -30,6 +30,9 @@ import {CarouselModule} from 'primeng/carousel';
 import {ToolbarModule} from 'primeng/toolbar';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import {RatingModule} from 'primeng/rating';
+import {PaginatorModule} from 'primeng/paginator';
+import {TableModule} from 'primeng/table';   
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,7 @@ import {RatingModule} from 'primeng/rating';
     ProductsComponent,
     LoginComponent,
     AddedItemsComponent,
-    TopNavbarComponent
+    TopNavbarComponent 
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,10 @@ import {RatingModule} from 'primeng/rating';
     CascadeSelectModule,
     CarouselModule, 
     ToolbarModule,
-    RatingModule
+    RatingModule,
+    PaginatorModule,
+    TableModule,
+    
   ],
   providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]

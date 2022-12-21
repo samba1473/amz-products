@@ -35,7 +35,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
     )
   }
   deleteItem(data:any){
-    const UserId = data.target.id;    
+    const UserId = data.target.id;
     this.confirmationService.confirm({
       message: 'Are you sure   you want to Delete this Item ?',
             accept: () => {
