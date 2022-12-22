@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
+    <h2 class="brandName">Students Data </h2>    
+</div>
+
+<div class="addStudentdataBtn">
+    <button pButton type="button" label="Add Student data" class="addstudentBtn" (click)=" openaddstdntpopup()" ></button>
+</div>
+
+<div class="card"> 
+    <!-- <div class="p-mb-3">
+        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+    </div> -->
+    <p-table [value]="studentData"  [scrollable]="true" scrollDirection="both" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+    [rowsPerPageOptions]="[5,10,15,20]" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th  pFrozenColumn>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Class</th>
+                <th>Seat</th>
+                <th>Eyes</th>
+                <th>ScheduleTime</th>
+                <th>ScheduleDestination</th>
+                <th>CheckBox</th>
+                <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data> 
+            <tr> 
+                <td  pFrozenColumn>{{data.id}}</td>
+                <td>{{data.Name}}</td>
+                <td *ngIf="data.Gender == 0"><span class="maleBg">Male</span></td>
+                <td *ngIf="data.Gender == 1"><span class="femaleBg">Female</span></td>
+                <td>{{data.Class}}</td>
+                <td>{{data.Seat}}</td>
+                <td>{{data.Eyes}}</td>
+                <td ><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleTime}}">{{data.ScheduleTime}}</p></td>
+                <td><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleDestination}}" >{{data.ScheduleDestination}}</p></td>
+                
+                <td> 
+                    <input type="checkbox" />
+                </td>
+
+                <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
+                    <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
+                    <button pButton type="button" icon="pi pi-trash" iconPos="left" class="p-button-danger" (click)=" deletestudentData(data.id)" ></button>               
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+ 
+
+<p-dialog header="Update Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" #refval>
+    <form class="updateUserPopup"  [formGroup]="adduserdata"  (ngSubmit)="addstudentdata(adduserdata.value)">
+        <!-- <span>
+            <label for="float-input">id</label>
+            <input id="float-input"     class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" >             
+        </span> -->
+        <span>
+            <label for="float-input">Name</label> 
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="Name" >           
+        </span>      
+        <span >
+            <label for="float-input">Calss</label>
+            <input id="float-input" pInputText pKeyFilter="int" class="p-inputtext-sm" type="text" pInputText name="class" formControlName="Class" >            
+        </span>
+        <span>
+            <label for="float-input">Seat</label>
+            <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="Seat"  >            
+        </span>    
+        <span>
+            <label for="float-input">Eyes Color</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="Eyes"  >            
+        </span>
+        <span>
+            <label for="float-input">Schedule Time</label>
+            <!-- <p-calendar formControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime"  >            
+        </span>
+        <span>
+            <label for="float-input">Schedule Destination</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="ScheduleDestination"  >            
+        </span>  
+        <span >
+            <label for="float-input">Gender</label>
+            <br>
+            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
+            <input type="radio" formControlName="Gender"  value="Male"> Male
+            <input type="radio" formControlName="Gender"  value="female"> Female 
+
+            <!-- <p-radioButton formControlName="gender" value="Male"></p-radioButton>
+            <p-radioButton formControlName="gender" value="female" ></p-radioButton> -->
+
+        </span>  
+        <p-button  type="submit" class="p-button-text">submit</p-button > 
+    </form>
+        <!-- <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
+        </ng-template> -->
+</p-dialog>

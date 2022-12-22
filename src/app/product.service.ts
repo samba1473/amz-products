@@ -31,4 +31,10 @@ export class ProductService {
   deleteuserdata(id){
     return this.http.delete(this._allUserDetails+id).subscribe( );
   }
+  // edituserdata(id){
+  //   return this.http.post(this._allUserDetails + id).subscribe(res=>{
+  //     console.log(res);
+      
+  //   })
+  // }
 }

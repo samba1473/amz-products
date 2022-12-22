@@ -1,10 +1,10 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
-    <h2 class="brandName">Users data </h2>
+    <h2 class="brandName">Users Data </h2>
     
 </div>
 
-<div class="card">
+<div class="card employeeData">
     <p-table [value]="allUserData" [scrollable]="true" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20]"  [globalFilterFields]="['name','country.name','representative.name','status']">
         
@@ -19,6 +19,7 @@
                 <th>Website</th>
                 <th>Company Name</th>
                 <th>Address</th>
+                <th>Checkbox</th>
                 <th  alignFrozen="right" pFrozenColumn [frozen]="balanceFrozen">Actions</th>
             </tr>
         </ng-template>
@@ -32,6 +33,7 @@
                 <td>{{product.website}}</td>
                 <td>{{product.company.name}}</td>
                 <td>{{product.address.street}},{{product.address.city}}, {{product.address.zipcode}}</td>
+                <td><input type="checkbox"></td>
                 <td  alignFrozen="right" pFrozenColumn [frozen]="balanceFrozen" class="d-flex">
                     <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" (click)="edituserData(product.id)"></button>
                     <button pButton type="button" icon="pi pi-trash" iconPos="left" class="p-button-danger" (click)="deleteuserselctdid(product.id)"></button>
@@ -44,53 +46,29 @@
 
 
 <p-dialog header="Update Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
-    <form class="updateUserPopup" #productData="ngForm" (ngSubmit)="  updateformuserdata()">
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="id" [(ngModel)]="id"> 
+    [draggable]="false" [resizable]="false" #refval>
+    <form class="updateUserPopup"  [formGroup]="userUpdateForm"  (ngSubmit)="updateformuserdata()">
+        <span>
             <label for="float-input">id</label>
+            <input id="float-input" class="p-inputtext-sm" readonly type="text" pInputText name="id" formControlName="id" [(ngModel)]="id">             
         </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="name"> 
+        <span>
             <label for="float-input">name</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="name" [(ngModel)]="fname" >           
         </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  formControlName="username"> 
+        <span >
             <label for="float-input">Username</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="username" formControlName="username"  [(ngModel)]="username"  >             
         </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="email"> 
+        <span >
             <label for="float-input">email</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="email" formControlName="email"  [(ngModel)]="email">            
         </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="phone"> 
+        <span>
             <label for="float-input">phone</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
-            <label for="float-input">website</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
-            <label for="float-input">street</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText > 
-            <label for="float-input">suite</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
-            <label for="float-input">city</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText > 
-            <label for="float-input">zipcode</label>
-        </span>
-        <span class="p-float-label">
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
-            <label for="float-input">company Name</label>
-        </span>
-        <button type="submit">submit</button>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="phone" formControlName="phone" [(ngModel)]="phone">            
+        </span>        
+        <p-button  type="submit" class="p-button-text">submit</p-button > 
     </form>
         <ng-template pTemplate="footer">
             <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>

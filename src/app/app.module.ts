@@ -31,7 +31,8 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import {RatingModule} from 'primeng/rating';
 import {PaginatorModule} from 'primeng/paginator';
-import {TableModule} from 'primeng/table';   
+import {TableModule} from 'primeng/table';
+import { StudentComponent } from './student/student/student.component';    
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {TableModule} from 'primeng/table';
     ProductsComponent,
     LoginComponent,
     AddedItemsComponent,
-    TopNavbarComponent 
+    TopNavbarComponent,
+    StudentComponent 
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,7 @@ import {TableModule} from 'primeng/table';
     RatingModule,
     PaginatorModule,
     TableModule,
-    
+     
   ],
   providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]

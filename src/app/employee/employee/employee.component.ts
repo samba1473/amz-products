@@ -22,19 +22,24 @@ export class EmployeeComponent implements OnInit{
   balanceFrozen: boolean = true;
   displayMaximizable:boolean=false;
   value2: string;
+  id:any
+  fname:any;
+  username:any;
+  email:any;
+  phone:any;
 
   updatesingleuserData:any[]=[]
   
   _userDetailsData="http://localhost:3000/allUserData/"
 
-  updateUserData=new FormGroup({
+  userUpdateForm=new FormGroup({
       id:new FormControl(''),
       name:new FormControl(''),
       username:new FormControl(''),
       email:new  FormControl(''),
       phone:new FormControl('') 
   })
-  id:any;
+  
 
   getallUsersData(){
     this._serv.getAlluserData().subscribe(item=>{       
@@ -56,25 +61,40 @@ export class EmployeeComponent implements OnInit{
   }
   edituserData(row){ 
     const rrr=row 
-    this.updatesingleuserData=[]
-    // this.http.get<any>(this._userDetailsData).subscribe((res)=>{
-    //   res.filter((ee)=>{        
-    //     if(ee.id === rrr){  
-    //       this.updatesingleuserData.push(ee);        
-    //     }
-    //   })
-    // })
+    this.updatesingleuserData=[] 
    const currentData= this.allUserData.find((aa)=>{
-      return aa.id === row
+      return aa.id === row 
     })
-    console.log(currentData);
+    console.log(currentData);    
+    this.userUpdateForm.value.id = currentData.id
+    this.userUpdateForm.value.name = currentData.name
+    this.id=currentData.id;
+    this.fname= currentData.name;
+    this.email=currentData.email;
+    this.username=currentData.username;
+    this.phone=currentData.phone;
+    
+
+    console.log(this.userUpdateForm.value.id);
+    console.log(this.userUpdateForm.value.name);
+    console.log(this.id);
+    
     
     this.displayMaximizable=true
   }
 
-  updateformuserdata(){
-    console.log(this.updateUserData.value);
-    
+  updateformuserdata( ){
+    console.log(this.userUpdateForm.value);
+   
+    this.http.put(this._userDetailsData + this.userUpdateForm.value.id,this.userUpdateForm.value).subscribe(data=>{
+      console.log(data);
+      
+    },error=>{
+      console.log("error");
+      
+    })
+    this.userUpdateForm.reset()
+    this.displayMaximizable=false
   }
   
   ngOnInit(): void {
