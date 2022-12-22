@@ -184,6 +184,16 @@
         }
     }
 }
+.updateUserPopup{
+    display: grid;
+    gap: 10px; 
+    justify-content: space-between;
+    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    .p-float-label{
+        width: 100%;
+    }
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 

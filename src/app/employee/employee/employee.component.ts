@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import {MessageService,ConfirmationService} from 'primeng/api';
+
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -11,11 +14,28 @@ export class EmployeeComponent implements OnInit{
     private _serv:ProductService,
     private messageService:MessageService,
     private confirmationService: ConfirmationService,
+    private http:HttpClient
     ){
 
   }
   allUserData:any;
   balanceFrozen: boolean = true;
+  displayMaximizable:boolean=false;
+  value2: string;
+
+  updatesingleuserData:any[]=[]
+ 
+  _userDetailsData="http://localhost:3000/allUserData/"
+
+  updateUserData=new FormGroup({
+      id:new FormControl(''),
+      name:new FormControl(''),
+      username:new FormControl(''),
+      email:new  FormControl(''),
+      phone:new FormControl('') 
+  })
+  id:any;
+
   getallUsersData(){
     this._serv.getAlluserData().subscribe(item=>{       
      this.allUserData=item
@@ -34,13 +54,26 @@ export class EmployeeComponent implements OnInit{
     })
    
   }
-  edituserData(row){
-    console.log(row);
-    
+  edituserData(row){ 
+    const rrr=row 
+    this.updatesingleuserData=[]
+    this.http.get<any>(this._userDetailsData).subscribe((res)=>{
+      res.filter((ee)=>{        
+        if(ee.id === rrr){  
+          this.updatesingleuserData.push(ee);        
+        }
+      })
+    })
+    this.displayMaximizable=true
   }
 
+  updateformuserdata(){
+    console.log(this.updateUserData.value);
+    
+  }
   
   ngOnInit(): void {
-    this.getallUsersData()
+    this.getallUsersData();
+    
   }
 }

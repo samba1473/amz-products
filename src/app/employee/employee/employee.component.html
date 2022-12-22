@@ -42,5 +42,63 @@
 </div>
 
 
+
+<p-dialog header="Update Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <form class="updateUserPopup" [formGroup]="updateUserData" (ngSubmit)="  updateformuserdata()">
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="id" [(ngModel)]="id"> 
+            <label for="float-input">id</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="name"> 
+            <label for="float-input">name</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  formControlName="username"> 
+            <label for="float-input">Username</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="email"> 
+            <label for="float-input">email</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText formControlName="phone"> 
+            <label for="float-input">phone</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
+            <label for="float-input">website</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
+            <label for="float-input">street</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText > 
+            <label for="float-input">suite</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
+            <label for="float-input">city</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText > 
+            <label for="float-input">zipcode</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText  > 
+            <label for="float-input">company Name</label>
+        </span>
+        <button type="submit">submit</button>
+    </form>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
+        </ng-template>
+</p-dialog>
+
+
+
 <p-toast position="top-right"></p-toast>
 <p-confirmDialog header="Confirmation" styleClass="confirmPopup" icon="pi pi-exclamation-triangle"></p-confirmDialog>
