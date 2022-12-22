@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import {MessageService,ConfirmationService} from 'primeng/api';
-
+import {NgForm} from '@angular/forms';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -24,7 +24,7 @@ export class EmployeeComponent implements OnInit{
   value2: string;
 
   updatesingleuserData:any[]=[]
- 
+  
   _userDetailsData="http://localhost:3000/allUserData/"
 
   updateUserData=new FormGroup({
@@ -50,20 +50,25 @@ export class EmployeeComponent implements OnInit{
               this._serv.deleteuserdata(row); 
               this.messageService.add({severity:'info', summary:'Item Deleted', detail:'Via MessageService'});         
               this. getallUsersData()
-            }
+            } 
     })
    
   }
   edituserData(row){ 
     const rrr=row 
     this.updatesingleuserData=[]
-    this.http.get<any>(this._userDetailsData).subscribe((res)=>{
-      res.filter((ee)=>{        
-        if(ee.id === rrr){  
-          this.updatesingleuserData.push(ee);        
-        }
-      })
+    // this.http.get<any>(this._userDetailsData).subscribe((res)=>{
+    //   res.filter((ee)=>{        
+    //     if(ee.id === rrr){  
+    //       this.updatesingleuserData.push(ee);        
+    //     }
+    //   })
+    // })
+   const currentData= this.allUserData.find((aa)=>{
+      return aa.id === row
     })
+    console.log(currentData);
+    
     this.displayMaximizable=true
   }
 
