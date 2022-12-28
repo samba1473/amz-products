@@ -26,8 +26,8 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {RatingModule} from 'primeng/rating';
 import {PaginatorModule} from 'primeng/paginator';
 import {TableModule} from 'primeng/table'; 
-import { CommonModule } from '@angular/common';
-import {CalendarModule} from 'primeng/calendar';
+import { CommonModule } from '@angular/common'; 
+import { CalendarModule } from './components/calender/calender';
 @NgModule({
  imports:      [ 
     CommonModule, 
