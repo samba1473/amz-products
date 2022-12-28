@@ -122,8 +122,8 @@ export class ProductsComponent implements OnInit ,DoCheck {
 
  
 
-  addData(event:any)  {
-    	this.UserId = event.target.id; 
+  addData(id)  {
+    	this.UserId = id; 
      this._productSerc.gaeProductData().subscribe(res=>{
       res.find((ee:any)=>{ 
         if(this.UserId == ee.id ){

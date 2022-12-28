@@ -2,8 +2,9 @@
     <h2 class="brandName">Students Data </h2>    
 </div>
 
-<div class="addStudentdataBtn">
-    <button pButton type="button" label="Add Student data" class="addstudentBtn" (click)=" openaddstdntpopup()" ></button>
+<div class="addStudentdataBtn d-flex justify-content-between">
+    <button pButton type="button" label="Add Student data" class="addstudentBtn mb-4" (click)=" openaddstdntpopup()" ></button>
+    <!-- <button pButton type="button" label="Edit data" class="addstudentBtn mb-4 p-button-warning"   ></button> -->
 </div>
 
 <div class="card"> 
@@ -13,7 +14,7 @@
         <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
     </div> -->
     <p-table [value]="studentData"  [scrollable]="true" scrollDirection="both" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
-    [rowsPerPageOptions]="[5,10,15,20]" >
+    [rowsPerPageOptions]="[5,10,15,20]">
         <ng-template pTemplate="header">
             <tr>
                 <th  pFrozenColumn>ID</th>
@@ -37,8 +38,8 @@
                 <td>{{data.Class}}</td>
                 <td>{{data.Seat}}</td>
                 <td>{{data.Eyes}}</td>
-                <td ><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleTime}}">{{data.ScheduleTime  }}</p></td>
-                <td><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleDestination}}" >{{data.ScheduleDestination}}</p></td>
+                <td ><p class="tableTsextEclipse" placement="top" >{{data.ScheduleTime  }}</p></td>
+                <td><p class="tableTsextEclipse" placement="top"  >{{data.ScheduleDestination}}</p></td>
                 
                 <td> 
                     <input type="checkbox" />
@@ -79,7 +80,7 @@
         </span>
         <span>
             <label for="float-input">Schedule Time</label>
-            <!-- <p-calendar formControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+            <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
             <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime" >            
         </span>
         <span>
@@ -128,7 +129,8 @@
             </span>
             <span>
                 <label for="float-input">Schedule Time</label>
-                <!-- <p-calendar formControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+                <br>
+                <!-- <p-calendar   class="p-inputtext-sm w-100" name="scheduletime" [showIcon]="true" name="scheduletime"   formControlName="scheduletime"  [(ngModel)]="scheduletime"></p-calendar> -->
                 <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime"  [(ngModel)]="scheduletime">            
             </span>
             <span>
@@ -157,3 +159,5 @@
 
 <p-toast position="top-right"></p-toast>
 <p-confirmDialog header="Confirmation" styleClass="confirmPopup" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+ 

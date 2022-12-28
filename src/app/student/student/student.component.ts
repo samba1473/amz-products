@@ -16,6 +16,7 @@ export class StudentComponent implements OnInit{
     private confirmationService: ConfirmationService,
     ){}
 
+    val:any;
   studentData:any;
   balanceFrozen: boolean = true;
   value: boolean=true;
@@ -155,7 +156,7 @@ editstudentdata(e:any){
       message: 'Are you sure   you want to Update this Item ?',
             accept: () => {
               this.http.put("http://localhost:3000/studentsData/" + this.edituserdata.value.id,this.edituserdata.value).subscribe(data=>{
-                console.log(data);
+                // console.log(data);
                 this.messageservice.add({severity:'success', summary:'Data Updated Successfully', detail:'Via MessageService'});   
               },error=>{
                 console.log("error");

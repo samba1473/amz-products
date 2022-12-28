@@ -570,6 +570,21 @@
         "https://i.dummyjson.com/data/products/5/2.jpg",
         "https://i.dummyjson.com/data/products/5/3.jpg"
       ]
+    },
+    {
+      "id": 3,
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     }
   ],
   "userDetails": [
@@ -789,29 +804,6 @@
         "name": "Yost and Sons",
         "catchPhrase": "Switchable contextually-based project",
         "bs": "aggregate real-time technologies"
-      }
-    },
-    {
-      "id": 10,
-      "name": "Clementina DuBuque",
-      "username": "Moriah.Stanton",
-      "email": "Rey.Padberg@karina.biz",
-      "address": {
-        "street": "Kattie Turnpike",
-        "suite": "Suite 198",
-        "city": "Lebsackbury",
-        "zipcode": "31428-2261",
-        "geo": {
-          "lat": "-38.2386",
-          "lng": "57.2232"
-        }
-      },
-      "phone": "024-648-3804",
-      "website": "ambrose.net",
-      "company": {
-        "name": "Hoeger LLC",
-        "catchPhrase": "Centralized empowering task-force",
-        "bs": "target end-to-end models"
       }
     }
   ],
@@ -1868,6 +1860,36 @@
       "ScheduleTime": "2023-01-07",
       "ScheduleDestination": "ywtew tysfc w",
       "id": 106
+    },
+    {
+      "Name": "ydutedg ",
+      "Gender": "0",
+      "Class": "234",
+      "Seat": "234",
+      "Eyes": "red",
+      "ScheduleTime": "2023-04-14",
+      "ScheduleDestination": "JUKWDYG UYDS",
+      "id": 107
+    },
+    {
+      "id": 108,
+      "Name": "sivarao",
+      "Gender": "0",
+      "Class": "357",
+      "Seat": "4563234",
+      "Eyes": "blue",
+      "ScheduleTime": "2023-12-12",
+      "ScheduleDestination": "ytd 7wyd "
+    },
+    {
+      "Name": "siva sankar",
+      "Gender": "0",
+      "Class": "234",
+      "Seat": "345",
+      "Eyes": "pink",
+      "ScheduleTime": "2022-12-29",
+      "ScheduleDestination": "ytfwd ctywc ",
+      "id": 109
     }
   ]
 }

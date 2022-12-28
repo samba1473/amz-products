@@ -27,16 +27,14 @@ import {RatingModule} from 'primeng/rating';
 import {PaginatorModule} from 'primeng/paginator';
 import {TableModule} from 'primeng/table'; 
 import { CommonModule } from '@angular/common';
-
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
  imports:      [ 
     CommonModule, 
-    BrowserModule,
-    AppRoutingModule,
+  
     FormsModule,
     ReactiveFormsModule ,
-    HttpClientModule,
-    BrowserAnimationsModule,
+ 
     NgbModule,
     ButtonModule,
     DialogModule,
@@ -55,18 +53,15 @@ import { CommonModule } from '@angular/common';
     ToolbarModule,
     RatingModule,
     PaginatorModule,
-    TableModule
+    TableModule,
+    CalendarModule
 ],
  declarations: [ 
     
   ],
  exports:      [ 
-    BrowserModule, 
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,  
     NgbModule,
     ButtonModule,
     DialogModule,
