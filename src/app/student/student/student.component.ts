@@ -15,16 +15,40 @@ export class StudentComponent implements OnInit{
   value: boolean=true;
   selectedValues: string[] = [];
   displayMaximizable:boolean=false;
+  updateForm:boolean=false;
  genders:any;
  nameee:any;
- 
+  openstudentpopup:boolean=false;
+ //edited data
+ id:any;
+ name:any;
+ class:any;
+ seat:any;
+ eyes:any;
+ scheduletime:any;
+ scheduledestination:any;
+ male:any;
+ female:any;
+
+
   adduserdata=new FormGroup({ 
     // id:new FormControl('',[Validators.required]),
     Name:new FormControl('',[Validators.required,Validators.minLength(4)]),
-    Gender:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    Gender:new FormControl('',[Validators.required,]),
     Class:new FormControl('',[Validators.required]),
     Seat:new FormControl('',[Validators.required]),
-    Eyes:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    Eyes:new FormControl('',[Validators.required]),
+    ScheduleTime:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    ScheduleDestination:new FormControl('',[Validators.required,Validators.minLength(4)])
+  })
+
+  edituserdata=new FormGroup({ 
+    id:new FormControl('',[Validators.required]),
+    Name:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    Gender:new FormControl('',[Validators.required,]),
+    Class:new FormControl('',[Validators.required]),
+    Seat:new FormControl('',[Validators.required]),
+    Eyes:new FormControl('',[Validators.required]),
     ScheduleTime:new FormControl('',[Validators.required,Validators.minLength(4)]),
     ScheduleDestination:new FormControl('',[Validators.required,Validators.minLength(4)])
   })
@@ -32,14 +56,38 @@ export class StudentComponent implements OnInit{
   getStudentdata(){
     this._serv.getstudentData().subscribe(data=>{
      this.studentData = data
-      console.log(this.studentData);
-      
+      // console.log(this.studentData);      
     })
   }
+
  openaddstdntpopup(){ 
     this.displayMaximizable=true;
+    this.openstudentpopup=false;
   }
-  addstudentdata(e:any){
+  openupdatestdntpopup(id){ 
+    this.displayMaximizable=true;
+    this.openstudentpopup=true;
+    const currentData= this.studentData.find((aa)=>{
+      return aa.id === id   
+    })  
+
+    this.id=currentData.id;
+    this.name=currentData.Name;
+    this.class=currentData.Class;
+    this.seat=currentData.Seat;
+    this.eyes=currentData.Eyes;
+    this.scheduletime=currentData.ScheduleTime;
+    this.scheduledestination=currentData.ScheduleDestination;
+    // console.log(this.id);
+
+      if(currentData.Gender == "1"){
+        this.female = "Female"         
+      }else if(currentData.Gender == "0"){
+        this.male="Male"
+      }
+  }
+
+  addstudentdata(e:any){  
     console.log(this.adduserdata.value); 
     if(this.adduserdata.value.Gender === "Male"){
       this.adduserdata.value.Gender = "0" 
@@ -51,20 +99,71 @@ export class StudentComponent implements OnInit{
             console.log(data);      
           },
           error=>{
-            console.log("error");
-            
-      })
-    
+            console.log("error");            
+      })  
    
     this.adduserdata.reset()  
     this.displayMaximizable=false;
     this.getStudentdata() 
     
+    
   }
+
   deletestudentData(id){ 
     this.http.delete("http://localhost:3000/studentsData/" + id).subscribe( )
     this.getStudentdata()  
   }
+editstudentdata(e:any){
+  if(this.edituserdata.value.Gender === "Male"){
+    this.edituserdata.value.Gender = "0" 
+        
+  }else{
+    this.edituserdata.value.Gender = "1"; 
+  }
+    this.http.put("http://localhost:3000/studentsData/" + this.edituserdata.value.id,this.edituserdata.value).subscribe(data=>{
+      console.log(data);
+      
+    },error=>{
+      console.log("error");
+      
+    })
+    this.edituserdata.reset()  
+    this.displayMaximizable=false;
+    this.getStudentdata() 
+}
+
+//   editstudentdata(id){
+//     this.updateForm=true
+//     console.log(id);
+
+//    const currentData= this.studentData.find((aa)=>{
+//     return aa.id === id    
+//   })  
+//   // this.adduserdata.value.Name = currentData.Name
+//   this.id=currentData.id;
+//   this.name=currentData.Name;
+//   this.class=currentData.Class;
+//   this.seat=currentData.Seat;
+//   this.eyes=currentData.Eyes;
+//   this.scheduletime=currentData.ScheduleTime;
+//   this.scheduledestination=currentData.ScheduleDestination; 
+
+//   if(currentData.Gender == 1){
+//     this.female = "Female"         
+//   }else{
+//     this.male="Male"
+//   }
+// console.log(this.updateuserdata.value);
+
+//   this.http.put("http://localhost:3000/studentsData/" + this.updateuserdata.value,this.updateuserdata.value).subscribe(data=>{
+//     console.log(data);
+    
+//   },error=>{
+//     console.log("error");
+    
+//   })
+  
+//   }
 
   ngOnInit(): void {
     this.getStudentdata()

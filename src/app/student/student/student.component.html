@@ -45,7 +45,7 @@
                 </td>
 
                 <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
-                    <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
+                    <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" (click)="openupdatestdntpopup(data.id)"></button>
                     <button pButton type="button" icon="pi pi-trash" iconPos="left" class="p-button-danger" (click)=" deletestudentData(data.id)" ></button>               
                 </td>
             </tr>
@@ -54,9 +54,9 @@
 </div>
  
 
-<p-dialog header="Update Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+<p-dialog header="Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" #refval>
-    <form class="updateUserPopup"  [formGroup]="adduserdata"  (ngSubmit)="addstudentdata(adduserdata.value)">
+    <form class="updateUserPopup" *ngIf="!openstudentpopup" [formGroup]="adduserdata"  (ngSubmit)="addstudentdata(adduserdata.value)">
         <!-- <span>
             <label for="float-input">id</label>
             <input id="float-input"     class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" >             
@@ -71,27 +71,27 @@
         </span>
         <span>
             <label for="float-input">Seat</label>
-            <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="Seat"  >            
+            <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="Seat" >            
         </span>    
         <span>
             <label for="float-input">Eyes Color</label>
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="Eyes"  >            
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="Eyes" >            
         </span>
         <span>
             <label for="float-input">Schedule Time</label>
             <!-- <p-calendar formControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
-            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime"  >            
+            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime" >            
         </span>
         <span>
             <label for="float-input">Schedule Destination</label>
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="ScheduleDestination"  >            
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="ScheduleDestination" >            
         </span>  
         <span >
             <label for="float-input">Gender</label>
             <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
-            <input type="radio" formControlName="Gender"  value="Male"> Male
-            <input type="radio" formControlName="Gender"  value="female"> Female 
+            <input type="radio" formControlName="Gender"  value="Male" > Male
+            <input type="radio" formControlName="Gender"  value="female" > Female 
 
             <!-- <p-radioButton formControlName="gender" value="Male"></p-radioButton>
             <p-radioButton formControlName="gender" value="female" ></p-radioButton> -->
@@ -103,4 +103,51 @@
             <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
             <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
         </ng-template> -->
+
+    <div *ngIf="openstudentpopup">
+        <form class="updateUserPopup" [formGroup]="edituserdata"  (ngSubmit)="editstudentdata(edituserdata.value)">
+            <span>
+                <label for="float-input">id</label>
+                <input id="float-input"   readonly  class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" [(ngModel)]="id">             
+            </span>
+            <span>
+                <label for="float-input">Name</label> 
+                <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="Name" [(ngModel)]="name">           
+            </span>      
+            <span >
+                <label for="float-input">Calss</label>
+                <input id="float-input" pInputText pKeyFilter="int" class="p-inputtext-sm" type="text" pInputText name="class" formControlName="Class" [(ngModel)]="class">            
+            </span>
+            <span>
+                <label for="float-input">Seat</label>
+                <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="Seat" [(ngModel)]="seat" >            
+            </span>    
+            <span>
+                <label for="float-input">Eyes Color</label>
+                <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="Eyes" [(ngModel)]="eyes" >            
+            </span>
+            <span>
+                <label for="float-input">Schedule Time</label>
+                <!-- <p-calendar formControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+                <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="ScheduleTime"  [(ngModel)]="scheduletime">            
+            </span>
+            <span>
+                <label for="float-input">Schedule Destination</label>
+                <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="ScheduleDestination"  [(ngModel)]="scheduledestination" >            
+            </span>  
+            <span >
+                <label for="float-input">Gender</label>
+                <br>
+                <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
+                <input type="radio" formControlName="Gender"  value="Male"  [(ngModel)]="male" > Male
+                <input type="radio" formControlName="Gender"  value="Female"  [(ngModel)]="female" > Female 
+    
+                <!-- <p-radioButton formControlName="gender" value="Male"></p-radioButton>
+                <p-radioButton formControlName="gender" value="female" ></p-radioButton> -->
+    
+            </span>  
+            <p-button  type="submit" class="p-button-text">submit</p-button > 
+        </form>
+    </div>
+    
 </p-dialog>
