@@ -26,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [MessageService, ConfirmationService ]
 })

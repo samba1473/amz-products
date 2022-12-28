@@ -823,7 +823,7 @@
       "Class": "32",
       "Seat": "15",
       "Eyes": "Black",
-      "ScheduleTime": "7_7_8_13.01_13.375_15.5_16_17.25_99_99",
+      "ScheduleTime": "2022-12-01",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Hangout_Locker_Exit"
     },
     {
@@ -833,7 +833,7 @@
       "Class": "11",
       "Seat": "14",
       "Eyes": "Red",
-      "ScheduleTime": "7_7_8_13_13.375_15.5_16_17.25_99_99",
+      "ScheduleTime": "2022-12-24",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Club_Locker_Exit"
     },
     {
@@ -843,7 +843,7 @@
       "Class": "12",
       "Seat": "14",
       "Eyes": "Yellow",
-      "ScheduleTime": "7_7_8_13_13.375_15.5_16_17.25_99_99",
+      "ScheduleTime": "2023-02-24",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Club_Locker_Exit"
     },
     {
@@ -853,7 +853,7 @@
       "Class": "21",
       "Seat": "14",
       "Eyes": "Green",
-      "ScheduleTime": "7_7_8_13.0001_13.375_15.5001_16_17.25_99_99",
+      "ScheduleTime": "2023-03-16",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Club_Locker_Exit"
     },
     {
@@ -863,7 +863,7 @@
       "Class": "22",
       "Seat": "14",
       "Eyes": "Blue",
-      "ScheduleTime": "7_7_8_13_13.375_15.5_16_17.25_99_99",
+      "ScheduleTime": "2022-12-24",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Club_Locker_Exit"
     },
     {
@@ -883,7 +883,7 @@
       "Class": "32",
       "Seat": "14",
       "Eyes": "Purple",
-      "ScheduleTime": "7_7_8_13.01_13.375_15.51_16_17.25_99_99",
+      "ScheduleTime": "2023-01-04",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Club_Locker_Exit"
     },
     {
@@ -944,7 +944,7 @@
       "Class": "32",
       "Seat": "12",
       "Eyes": "Purple",
-      "ScheduleTime": "7_7_8_13_13.375_15.5_16_16.25_17.5_99_99",
+      "ScheduleTime": "2023-01-12",
       "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Stalk_Patrol_Locker_Exit"
     },
     {
@@ -1626,7 +1626,7 @@
       "Class": "32",
       "Seat": "1",
       "Eyes": "Ganguro1",
-      "ScheduleTime": "7_7_8_13_13.375_15.5_16_99",
+      "ScheduleTime": "2022-12-22",
       "ScheduleDestination": "Spawn_Locker_Graffiti_Seat_Bully_Seat_Hangout_Patrol"
     },
     {
@@ -1820,14 +1820,14 @@
       "ScheduleDestination": "Nothing"
     },
     {
+      "id": 102,
       "Name": "aasa",
-      "Gender": "1",
-      "Class": "43534534",
+      "Gender": "0",
+      "Class": "436",
       "Seat": "345345",
-      "Eyes": "dtjyhdcghj",
-      "ScheduleTime": "0002-12-12",
-      "ScheduleDestination": "gxhff",
-      "id": 102
+      "Eyes": "red",
+      "ScheduleTime": "2023-12-12",
+      "ScheduleDestination": "gxhff"
     },
     {
       "Name": "samba",
@@ -1840,14 +1840,34 @@
       "id": 103
     },
     {
-      "Name": "siva",
+      "id": 104,
+      "Name": "sambasivarao",
       "Gender": "1",
-      "Class": "45554",
-      "Seat": "45554",
-      "Eyes": "oifjdofijvn",
-      "ScheduleTime": "1221-12-12",
-      "ScheduleDestination": "kidujhsi",
-      "id": 104
+      "Class": "434",
+      "Seat": "4584",
+      "Eyes": "red",
+      "ScheduleTime": "2023-01-01",
+      "ScheduleDestination": "tysaghsb"
+    },
+    {
+      "id": 105,
+      "Name": "wwwwwww",
+      "Gender": "0",
+      "Class": "2",
+      "Seat": "2222",
+      "Eyes": "red",
+      "ScheduleTime": "2022-12-30",
+      "ScheduleDestination": "azsxccsas"
+    },
+    {
+      "Name": "sambasiva",
+      "Gender": "0",
+      "Class": "345",
+      "Seat": "345",
+      "Eyes": "blue",
+      "ScheduleTime": "2023-01-07",
+      "ScheduleDestination": "ywtew tysfc w",
+      "id": 106
     }
   ]
 }

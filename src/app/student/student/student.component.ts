@@ -2,13 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MessageService,ConfirmationService} from 'primeng/api';
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit{
-  constructor(private _serv:StudentService, private http:HttpClient){}
+  constructor(
+    private _serv:StudentService, 
+    private http:HttpClient, 
+    private messageservice:MessageService,    
+    private confirmationService: ConfirmationService,
+    ){}
 
   studentData:any;
   balanceFrozen: boolean = true;
@@ -46,17 +52,24 @@ export class StudentComponent implements OnInit{
     id:new FormControl('',[Validators.required]),
     Name:new FormControl('',[Validators.required,Validators.minLength(4)]),
     Gender:new FormControl('',[Validators.required,]),
-    Class:new FormControl('',[Validators.required]),
-    Seat:new FormControl('',[Validators.required]),
-    Eyes:new FormControl('',[Validators.required]),
+    Class:new FormControl('',[Validators.required,Validators.minLength(1)]),
+    Seat:new FormControl('',[Validators.required,Validators.minLength(1)]),
+    Eyes:new FormControl('',[Validators.required,Validators.minLength(1)]),
     ScheduleTime:new FormControl('',[Validators.required,Validators.minLength(4)]),
     ScheduleDestination:new FormControl('',[Validators.required,Validators.minLength(4)])
   })
 
   getStudentdata(){
     this._serv.getstudentData().subscribe(data=>{
-     this.studentData = data
-      // console.log(this.studentData);      
+     this.studentData = data ; 
+      
+     this.studentData = this.studentData.sort(
+      (p1, p2) => (p1.Class < p2.Class) ? 1 : (p1.Class > p2.Class) ? -1 : 0);
+      
+
+      //   this.studentData = this.studentData.sort(
+      // (p1, p2) => (p1.Gender < p2.Gender) ? 1 : (p1.Gender > p2.Gender) ? -1 : 0);
+      // console.log(this.studentData);
     })
   }
 
@@ -78,12 +91,11 @@ export class StudentComponent implements OnInit{
     this.eyes=currentData.Eyes;
     this.scheduletime=currentData.ScheduleTime;
     this.scheduledestination=currentData.ScheduleDestination;
-    // console.log(this.id);
 
-      if(currentData.Gender == "1"){
-        this.female = "Female"         
-      }else if(currentData.Gender == "0"){
-        this.male="Male"
+      if(currentData.Gender === "0"){
+          this.male="Male"       
+      }else if(currentData.Gender ==="1"){
+        this.female = "Female" 
       }
   }
 
@@ -95,23 +107,41 @@ export class StudentComponent implements OnInit{
     }else{
       this.adduserdata.value.Gender = "1"; 
     }
-      this.http.post("http://localhost:3000/studentsData",this.adduserdata.value).subscribe(data=>{
-            console.log(data);      
-          },
-          error=>{
-            console.log("error");            
-      })  
-   
-    this.adduserdata.reset()  
-    this.displayMaximizable=false;
-    this.getStudentdata() 
-    
+      
+
+    this.confirmationService.confirm({
+      message: 'Are you sure   you want to Add this Item ?',
+            accept: () => {
+              this.http.post("http://localhost:3000/studentsData",this.adduserdata.value).subscribe(data=>{
+                this.messageservice.add({severity:'success', summary:'Data Added Successfully', detail:'Via MessageService'});    
+                  },
+                  error=>{
+                    console.log("error");            
+              })  
+              this.adduserdata.reset()  
+              this.displayMaximizable=false;
+              this.getStudentdata() 
+            } 
+    })
+
+  
     
   }
 
   deletestudentData(id){ 
-    this.http.delete("http://localhost:3000/studentsData/" + id).subscribe( )
-    this.getStudentdata()  
+    // this.http.delete("http://localhost:3000/studentsData/" + id).subscribe( )
+    // this.messageservice.add({severity:'info', summary:'Data Deleted Successfully', detail:'Via MessageService'});   
+    // this.getStudentdata()  
+
+
+    this.confirmationService.confirm({
+      message: 'Are you sure   you want to Delete this Item ?',
+            accept: () => {
+              this.http.delete("http://localhost:3000/studentsData/" + id).subscribe( )
+              this.messageservice.add({severity:'info', summary:'Data Deleted Successfully', detail:'Via MessageService'});   
+              this.getStudentdata() 
+            } 
+    })
   }
 editstudentdata(e:any){
   if(this.edituserdata.value.Gender === "Male"){
@@ -120,16 +150,22 @@ editstudentdata(e:any){
   }else{
     this.edituserdata.value.Gender = "1"; 
   }
-    this.http.put("http://localhost:3000/studentsData/" + this.edituserdata.value.id,this.edituserdata.value).subscribe(data=>{
-      console.log(data);
-      
-    },error=>{
-      console.log("error");
-      
+   
+    this.confirmationService.confirm({
+      message: 'Are you sure   you want to Update this Item ?',
+            accept: () => {
+              this.http.put("http://localhost:3000/studentsData/" + this.edituserdata.value.id,this.edituserdata.value).subscribe(data=>{
+                console.log(data);
+                this.messageservice.add({severity:'success', summary:'Data Updated Successfully', detail:'Via MessageService'});   
+              },error=>{
+                console.log("error");
+                
+              })
+              this.edituserdata.reset()  
+              this.displayMaximizable=false;
+              this.getStudentdata() 
+            } 
     })
-    this.edituserdata.reset()  
-    this.displayMaximizable=false;
-    this.getStudentdata() 
 }
 
 //   editstudentdata(id){

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit,AfterViewInit,DoCheck ,AfterContent
 
   } 
   ngOnInit(): void {
-       console.log(this._productServ.totalAddedItems)
+      //  console.log(this._productServ.totalAddedItems) 
        
        setInterval(()=>{
         this._productServ.addselectedData().subscribe(item=>{

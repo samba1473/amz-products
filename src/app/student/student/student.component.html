@@ -37,7 +37,7 @@
                 <td>{{data.Class}}</td>
                 <td>{{data.Seat}}</td>
                 <td>{{data.Eyes}}</td>
-                <td ><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleTime}}">{{data.ScheduleTime}}</p></td>
+                <td ><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleTime}}">{{data.ScheduleTime  }}</p></td>
                 <td><p class="tableTsextEclipse" placement="top" ngbTooltip="{{data.ScheduleDestination}}" >{{data.ScheduleDestination}}</p></td>
                 
                 <td> 
@@ -134,6 +134,7 @@
             <span>
                 <label for="float-input">Schedule Destination</label>
                 <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="ScheduleDestination"  [(ngModel)]="scheduledestination" >            
+                 
             </span>  
             <span >
                 <label for="float-input">Gender</label>
@@ -151,3 +152,8 @@
     </div>
     
 </p-dialog>
+
+
+
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Confirmation" styleClass="confirmPopup" icon="pi pi-exclamation-triangle"></p-confirmDialog>

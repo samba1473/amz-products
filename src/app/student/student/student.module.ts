@@ -12,7 +12,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext'; 
-import {CalendarModule} from 'primeng/calendar';  
+import {CalendarModule} from 'primeng/calendar'; 
+import {MessageService,ConfirmationService} from 'primeng/api';
 @NgModule({
   declarations: [],
   imports: [
@@ -30,6 +31,6 @@ import {CalendarModule} from 'primeng/calendar';
     InputTextModule,
     CalendarModule, 
   ],
-
+  providers: [MessageService, ConfirmationService ]
 })
 export class StudentModule { }
