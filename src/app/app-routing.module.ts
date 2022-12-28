@@ -14,8 +14,7 @@ const routes: Routes = [
     {path:'products',component:ProductsComponent},
     {path:'selectedProduct', component: AddedItemsComponent},
     {path:'employee', loadChildren: ()=> import('./employee/employee/employee.module').then(m=>m.EmployeeModule)},
-    {path:'student', loadChildren: ()=> import('./student/student/student.module').then(m=>m.StudentModule)}
-     
+    {path:'student', loadChildren: ()=> import('./student/student/student.module').then(m=>m.StudentModule)}     
 
   ]
 } 
