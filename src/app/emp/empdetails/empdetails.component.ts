@@ -42,7 +42,7 @@ export class EmpdetailsComponent implements OnInit{
       this.checkvalue.push(event.target.value)
       this.addempdatadata.value.myValues=this.checkvalue;
       console.log(this.checkvalue);
-      
+      console.log(this.checkvalue);
     }
   }
  ngOnInit(): void {
