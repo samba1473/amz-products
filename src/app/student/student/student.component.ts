@@ -81,7 +81,8 @@ export class StudentComponent implements OnInit{
   openupdatestdntpopup(id){ 
     this.displayMaximizable=true;
     this.openstudentpopup=true;
-    const currentData= this.studentData.find((aa)=>{
+    const currentData= this.studentData
+    .find((aa)=>{
       return aa.id === id   
     })  
 
