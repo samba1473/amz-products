@@ -22,6 +22,7 @@
                 <th>DOB</th>
                 <th>Salery</th>
                 <th>Address</th>
+                <th>Status</th>
                 <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
             </tr>
         </ng-template>
@@ -36,7 +37,7 @@
                 <td>{{data.dob}}</td>
                 <td > {{data.salary  }}</td>
                 <td> {{data.address}}</td>
-                 
+                <td>{{data.status}}</td>
 
                 <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
                     <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success"  ></button>
