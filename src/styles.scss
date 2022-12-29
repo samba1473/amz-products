@@ -13,6 +13,15 @@
 .relativePosition{
     position: relative;
 } 
+.topNav_profileBTN {
+    padding: 0;
+    font-size: 23px;
+    font-weight: bold;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+}
   
 .cardDiv{
     align-items: center;
@@ -39,6 +48,10 @@
         }
     }
 } 
+.card.cardDiv {
+    display: grid;
+    box-shadow: none;
+}
 .imagesDiv{    
     img{
         width:100%;
@@ -227,6 +240,10 @@
         border: none;
         margin-bottom: 30px;
     }   
+}
+.checkboxActiveBTN{
+    display:block;
+    
 }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

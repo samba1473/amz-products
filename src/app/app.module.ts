@@ -11,7 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule, 
   ], 
   bootstrap: [AppComponent]
 })

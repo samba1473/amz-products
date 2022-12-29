@@ -9,11 +9,11 @@
 <div style="display:contents">
   <div class="row">
     <div *ngIf="productsData">
-      <p-table [value]="productsData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+      <p-table [value]="productsData" [paginator]="false" [rows]="5" [showCurrentPageReport]="true" 
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20,25]">
       <ng-template pTemplate="body" let-data>   
         <tr>
-          <div class="cardDiv">   
+          <div class="card cardDiv">   
               <img src="{{data.thumbnail}}" width="100%"> 
             <div class="contentDiv"> 
               <h4>{{data.description}}</h4>

@@ -56,7 +56,8 @@ loginsubmit(){
         })
         if(user){
           localStorage.setItem("email",this.loginform.value["email"]);
-          localStorage.setItem("pwd",this.loginform.value["pwd"]);
+          localStorage.setItem("pwd",this.loginform.value["password"]);
+          console.log(localStorage.getItem("password"));          
           this.route.navigate(["home/products"]) 
           this.messageService.add({severity:'success', summary:'User Login Successfully', detail:'Via MessageService'});
         

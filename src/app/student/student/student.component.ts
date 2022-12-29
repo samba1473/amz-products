@@ -203,6 +203,15 @@ editstudentdata(e:any){
   
 //   }
 
+checkBoxId:boolean=false;
+checkValue(id,event: any){
+   console.log(id);
+   console.log(event);
+   this.checkBoxId=event
+   console.log(this.checkBoxId);
+   
+   
+}
   ngOnInit(): void {
     this.getStudentdata()
     

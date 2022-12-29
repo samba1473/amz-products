@@ -4,7 +4,7 @@
 
 <div class="addStudentdataBtn d-flex justify-content-between">
     <button pButton type="button" label="Add Student data" class="addstudentBtn mb-4" (click)=" openaddstdntpopup()" ></button>
-    <!-- <button pButton type="button" label="Edit data" class="addstudentBtn mb-4 p-button-warning"   ></button> -->
+    <button pButton type="button" label="Edit data" class="mb-4 p-button-warning"  [style.display]="checkBoxId ? 'block':'none'" ></button>
 </div>
 
 <div class="card"> 
@@ -42,7 +42,11 @@
                 <td><p class="tableTsextEclipse" placement="top"  >{{data.ScheduleDestination}}</p></td>
                 
                 <td> 
-                    <input type="checkbox" />
+                    <!-- <input type="checkbox" /> -->
+                    <p-checkbox name="groupname" [binary]="true" ngModel ></p-checkbox> 
+                    <p-checkbox name="reviewed" inputId="{{data.id}}" [(ngModel)]="data.reviewed"
+                    [binary]="true" (onChange)="checkValue(checkElm.inputId ,data.reviewed)" #checkElm>
+                    </p-checkbox>
                 </td>
 
                 <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
@@ -55,18 +59,18 @@
 </div>
  
 
-<p-dialog header="Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+<p-dialog header="{{!openstudentpopup ?'Add Student Data':'Update Student Data'}}" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" #refval>
-    <form class="updateUserPopup" *ngIf="!openstudentpopup" [formGroup]="adduserdata"  (ngSubmit)="addstudentdata(adduserdata.value)">
+    <form class="updateUserPopup" *ngIf="!openstudentpopup" [formGroup]="adduserdata"   (ngSubmit)="addstudentdata(adduserdata.value)">
         <!-- <span>
-            <label for="float-input">id</label>
+            <label for="float-input">id</label>  (ngSubmit)="addstudentdata(adduserdata.value)"
             <input id="float-input"     class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" >             
         </span> -->
         <span>
             <label for="float-input">Name</label> 
             <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="Name" >           
-        </span>      
-        <span >
+        </span>
+        <span>
             <label for="float-input">Calss</label>
             <input id="float-input" pInputText pKeyFilter="int" class="p-inputtext-sm" type="text" pInputText name="class" formControlName="Class" >            
         </span>
@@ -91,11 +95,11 @@
             <label for="float-input">Gender</label>
             <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
-            <input type="radio" formControlName="Gender"  value="Male" > Male
-            <input type="radio" formControlName="Gender"  value="female" > Female 
+            <!-- <input type="radio" formControlName="Gender"  value="Male" > Male
+            <input type="radio" formControlName="Gender"  value="female" > Female  -->
 
-            <!-- <p-radioButton formControlName="gender" value="Male"></p-radioButton>
-            <p-radioButton formControlName="gender" value="female" ></p-radioButton> -->
+            <p-radioButton   value="Male"  formControlName="Gender" ></p-radioButton> Male
+            <p-radioButton  value="female"  formControlName="Gender" ></p-radioButton> Female 
 
         </span>  
         <p-button  type="submit" class="p-button-text">submit</p-button > 
@@ -142,9 +146,11 @@
                 <label for="float-input">Gender</label>
                 <br>
                 <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
-                <input type="radio" formControlName="Gender"  value="Male"  [(ngModel)]="male" > Male
-                <input type="radio" formControlName="Gender"  value="Female"  [(ngModel)]="female" > Female 
-    
+                <!-- <input type="radio" formControlName="Gender"  value="Male"  [(ngModel)]="male" > Male -->
+                <!-- <input type="radio" formControlName="Gender"  value="Female"  [(ngModel)]="female" > Female  -->
+                <p-radioButton   value="Male"  formControlName="Gender" [(ngModel)]="male"></p-radioButton> Male
+                <p-radioButton  value="Female"  formControlName="Gender" [(ngModel)]="female"></p-radioButton> Female
+
                 <!-- <p-radioButton formControlName="gender" value="Male"></p-radioButton>
                 <p-radioButton formControlName="gender" value="female" ></p-radioButton> -->
     

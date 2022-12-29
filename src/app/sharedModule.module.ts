@@ -28,6 +28,9 @@ import {PaginatorModule} from 'primeng/paginator';
 import {TableModule} from 'primeng/table'; 
 import { CommonModule } from '@angular/common'; 
 import { CalendarModule } from './components/calender/calender';
+import {CheckboxModule} from 'primeng/checkbox';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 @NgModule({
  imports:      [ 
     CommonModule, 
@@ -54,7 +57,9 @@ import { CalendarModule } from './components/calender/calender';
     RatingModule,
     PaginatorModule,
     TableModule,
-    CalendarModule
+    CalendarModule,
+    CheckboxModule,
+    RadioButtonModule
 ],
  declarations: [ 
     
@@ -80,7 +85,8 @@ import { CalendarModule } from './components/calender/calender';
     ToolbarModule,
     RatingModule,
     PaginatorModule,
-    TableModule
+    TableModule,
+    RadioButtonModule
 
 ],
 providers: [

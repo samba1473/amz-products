@@ -13,8 +13,7 @@ balanceFrozen: boolean = true;
 
   gerUserData(){
     this._userServ.getuserdata().subscribe((res:any)=>{
-      this.userData=res
-      console.log(this.userData);      
+      this.userData=res        
     })
   }
   ngOnInit(): void {
