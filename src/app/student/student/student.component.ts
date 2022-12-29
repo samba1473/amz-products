@@ -23,8 +23,8 @@ export class StudentComponent implements OnInit{
   selectedValues: string[] = [];
   displayMaximizable:boolean=false;
   updateForm:boolean=false;
- genders:any;
- nameee:any;
+  genders:any;
+  nameee:any;
   openstudentpopup:boolean=false;
  //edited data
  id:any;

@@ -1910,26 +1910,6 @@
       "ScheduleTime": "2022-12-29",
       "ScheduleDestination": "ytfwd ctywc ",
       "id": 109
-    },
-    {
-      "Name": "sisbsss",
-      "Gender": "0",
-      "Class": "437",
-      "Seat": "437",
-      "Eyes": "red",
-      "ScheduleTime": "2022-12-12",
-      "ScheduleDestination": "tre wytey",
-      "id": 110
-    },
-    {
-      "id": 111,
-      "Name": "shgsyh",
-      "Gender": "0",
-      "Class": "438",
-      "Seat": "438",
-      "Eyes": "blue",
-      "ScheduleTime": "2023-12-12",
-      "ScheduleDestination": "hgytg ydtswc "
     }
   ],
   "userdata": [
@@ -2062,6 +2042,19 @@
       "salary": 10,
       "address": "Address10",
       "status": "active"
+    }
+  ],
+  "empDetails":[
+    {
+      "id":1,
+      "firstName":"samba",
+      "middleName":"siva",
+      "lastName":"rao",
+      "empid":1001,
+      "gender":"male",
+      "department":"developer",
+      "dob":"01/02/1993",
+      "dateofjoining":"01/02/2022"
     }
   ]
 }

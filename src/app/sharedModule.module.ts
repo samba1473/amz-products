@@ -29,8 +29,7 @@ import {TableModule} from 'primeng/table';
 import { CommonModule } from '@angular/common'; 
 import { CalendarModule } from './components/calender/calender';
 import {CheckboxModule} from 'primeng/checkbox';
-import {RadioButtonModule} from 'primeng/radiobutton';
-
+import {RadioButtonModule} from 'primeng/radiobutton'; 
 @NgModule({
  imports:      [ 
     CommonModule, 

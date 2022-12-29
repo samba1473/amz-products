@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
+    <h2 class="brandName">Emp Data </h2>    
+</div>
+
+<div class="addStudentdataBtn d-flex justify-content-between">
+    <button pButton type="button" label="Add Student data" class="addstudentBtn mb-4" (click)=" openaddstdntpopup()" ></button>
+    <!-- <button pButton type="button" label="Edit data" class="mb-4 p-button-warning"  [style.display]="checkBoxId ? 'block':'none'" ></button> -->
+</div>
+
+<p-table [value]="newEmpDetails"  [scrollable]="true" scrollDirection="both" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+[rowsPerPageOptions]="[5,10,15,20]">
+    <ng-template pTemplate="header">
+        <tr>
+            <th  pFrozenColumn>ID</th>
+            <th>First Name</th>
+            <th>Middle name</th>
+            <th>Last Name</th> 
+            <th>Gender</th>
+            <th>DepartMant</th>
+            <th>DOB</th>
+            <th>Date Of Joining</th>
+            <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data> 
+        <tr> 
+            <td  pFrozenColumn>{{data.empid}}</td>
+            <td>{{data.firstName}}</td>
+            <td  >{{data.middleName}}e</td>
+            <td >{{data.lastName}}</td> 
+            <td>{{data.gender}}</td>
+            <td>{{data.department}}</td>
+            <td > {{data.dob  }} </td>
+            <td>{{data.dateofjoining}}</td>
+            
+          
+
+            <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
+                <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
+                <button pButton type="button" icon="pi pi-trash" iconPos="left" class="p-button-danger" ></button>               
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<p-dialog header=" Add Student Data }}" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" #refval>
+    <form class="updateUserPopup"  [formGroup]="addempdatadata"   (ngSubmit)="empaddeddata(addempdatadata.value)" >
+        <!-- <span>
+            <label for="float-input">id</label>  (ngSubmit)="addstudentdata(adduserdata.value)"
+            <input id="float-input"     class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" >             
+        </span> -->
+        <span>
+            <label for="float-input">First Name</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="fname" >           
+        </span>
+        <span>
+            <label for="float-input">Middle Name</label>
+            <input id="float-input" pInputText   class="p-inputtext-sm" type="text" pInputText name="class" formControlName="mname" >            
+        </span>
+        <span>
+            <label for="float-input">Last Name</label>
+            <input id="float-input" pInputText    pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="lname" >            
+        </span>    
+        <span>
+            <label for="float-input">Emp ID</label>
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >            
+        </span>
+        <span>
+            <label for="float-input">dateofjoining</label>
+            <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="dateofjoining" >            
+        </span>
+        <span>
+            <label for="float-input">Department</label>
+            <br>
+            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="department" > -->
+            <p-dropdown [options]="cities" formControlName="department"   class="p-inputtext-sm" placeholder="Select a depertment" ></p-dropdown>            
+        </span>  
+        <span>
+            <label for="float-input">dob</label>
+            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="sechdestination" formControlName="dob" >            
+        </span>  
+        <span >
+            <label for="float-input">Gender</label>
+            <br>
+            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
+            <!-- <input type="radio" formControlName="Gender"  value="Male" > Male
+            <input type="radio" formControlName="Gender"  value="female" > Female  -->
+
+            <p-radioButton    value="Male"  formControlName="gender" ></p-radioButton> Male
+            <p-radioButton   value="female"  formControlName="gender" ></p-radioButton> Female 
+
+        </span>  
+        <span >
+            <label for="float-input">Gender</label>
+            <br>
+           
+            <input type="checkbox" id="checkbox-1" value="laptop" formControlName="myValues" (change)="onchange($event)"/> Laptop
+            <input type="checkbox" id="checkbox-2" value="system" formControlName="myValues" (change)="onchange($event)"/> Sysyem 
+            <input type="checkbox" id="checkbox-3" value="Keyboard" formControlName="myValues" (change)="onchange($event)"/>Keyboard
+
+        </span>  
+        <p-button  type="submit" class="p-button-text">submit</p-button > 
+    </form>
+        <!-- <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
+        </ng-template> -->
+
+     
+    
+</p-dialog>
