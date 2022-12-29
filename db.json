@@ -607,6 +607,15 @@
       "mobile": "9160702564",
       "status": "true",
       "id": 2
+    },
+    {
+      "fname": "samba",
+      "lname": "g",
+      "email": "siva@gmail.com",
+      "password": "Siva@2022",
+      "mobile": "654789878",
+      "status": "false",
+      "id": 3
     }
   ],
   "allUserData": [
