@@ -19,6 +19,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
   noData:any;
   totalItems:any;
   show:boolean=false;
+
   showselectedData(){
     this._selecteddata.addselectedData().subscribe(
       show=>{
@@ -34,6 +35,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
       }
     )
   }
+  
   deleteItem(data:any){
     const UserId = data.target.id;
     this.confirmationService.confirm({

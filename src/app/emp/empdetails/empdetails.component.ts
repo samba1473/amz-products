@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { EmpdetailsService } from '../empdetails.service';
 
 import { FormControl, FormGroup,FormArray, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-empdetails',
   templateUrl: './empdetails.component.html',
@@ -9,45 +10,69 @@ import { FormControl, FormGroup,FormArray, Validators } from '@angular/forms';
 })
 export class EmpdetailsComponent implements OnInit{
 
-  constructor(private _serv:EmpdetailsService){}
+  constructor(private _serv:EmpdetailsService,  private http:HttpClient){}
 
   newEmpDetails:any[]=[];
   balanceFrozen: boolean = true;
   displayMaximizable:boolean=false;
+  selectedValues:any;
 
   addempdatadata=new FormGroup({
-    fname:new FormControl(),
-    mname:new FormControl(),
-    lname:new FormControl(),
-    empid:new FormControl(),
-    gender:new FormControl(),
-    department:new FormControl(),
-    dob:new FormControl(),
-    dateofjoining: new FormControl(),
-    myValues:new FormControl([])
+    fname:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    mname:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    lname:new FormControl('',[Validators.required,Validators.minLength(1)]),
+    empid:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    gender:new FormControl('',[Validators.required]),
+    department:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    dob:new FormControl('', [Validators.required,Validators.minLength(4)]),
+    dateofjoining: new FormControl('',[Validators.required,Validators.minLength(4)]),
+    myItems:new FormControl([],[Validators.required])
   })
 
   cities = ["developer","designer","tester"];
   openaddstdntpopup(){
     this.displayMaximizable=true;
   }
-  empaddeddata(id){
-    console.log(this.addempdatadata.value);
-    
-  }
+
   checkvalue:any[]=[]
-  onchange(event){
-    if(event.target.checked){
-      console.log(event.target.value);
-      this.checkvalue.push(event.target.value)
-      this.addempdatadata.value.myValues=this.checkvalue;
-      console.log(this.checkvalue);
-      console.log(this.checkvalue);
+
+  displayEmpData(){
+    this._serv.getempdetails().subscribe((res:any)=>{
+      this.newEmpDetails=res
+     })
+  }
+
+  onchange(event ){ 
+    if(event.target.checked){ 
+        this.checkvalue.push(event.target.value)
+        this.addempdatadata.value.myItems=this.checkvalue; 
+    }else{
+        let index =  this.checkvalue.indexOf(event.target.value); 
+        this.checkvalue.splice(index, 1);
+        this.addempdatadata.value.myItems=this.checkvalue;
     }
   }
+
+  empaddeddata(id:any){
+    if(this.addempdatadata.value.myItems.length > 0){
+      this.addempdatadata.value.myItems = [...new Set(this.addempdatadata.value.myItems)];
+    }else{
+
+    }
+
+    this._serv.postemdData(this.addempdatadata.value).subscribe()
+   
+    this.addempdatadata.reset()
+    this.displayMaximizable=false;
+    this.displayEmpData();
+  }
+
+  deletetablerow(id){ 
+     this._serv.deleteempData(id).subscribe();
+     this.displayEmpData();
+  }
+
  ngOnInit(): void {
-   this._serv.getempdetails().subscribe((res:any)=>{
-    this.newEmpDetails=res
-   })
+  this.displayEmpData();
  }
 }

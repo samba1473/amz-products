@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import {MessageService,ConfirmationService} from 'primeng/api';
-import {NgForm} from '@angular/forms';
+import {NgForm, Validators} from '@angular/forms';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -36,7 +36,7 @@ export class EmployeeComponent implements OnInit{
       id:new FormControl(''),
       name:new FormControl(''),
       username:new FormControl(''),
-      email:new  FormControl(''),
+      email:new  FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       phone:new FormControl('') 
   })
   

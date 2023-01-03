@@ -1,14 +1,7 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';  
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {ButtonModule} from 'primeng/button';
-import {DialogModule} from 'primeng/dialog';
-import {ToastModule} from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';  
 import { MessageService } from 'primeng/api'; 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
@@ -21,15 +14,17 @@ import {PasswordModule} from 'primeng/password';
 import { DividerModule } from "primeng/divider";
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
-import {CarouselModule} from 'primeng/carousel'; 
+import {CarouselModule} from 'primeng/carousel';
 import {ToolbarModule} from 'primeng/toolbar'; 
-import {RatingModule} from 'primeng/rating';
-import {PaginatorModule} from 'primeng/paginator';
-import {TableModule} from 'primeng/table'; 
+import {RatingModule} from 'primeng/rating';  
 import { CommonModule } from '@angular/common'; 
 import { CalendarModule } from './components/calender/calender';
 import {CheckboxModule} from 'primeng/checkbox';
 import {RadioButtonModule} from 'primeng/radiobutton'; 
+import { TableModule } from './components/table/table';
+import { DialogModule } from './components/dialog/dialog';
+import { PaginatorModule } from './components/paginator/paginator';
+import { ToastModule } from './components/toast/toast';
 @NgModule({
  imports:      [ 
     CommonModule, 
@@ -38,9 +33,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ReactiveFormsModule ,
  
     NgbModule,
-    ButtonModule,
-    DialogModule,
-    ToastModule,
+    ButtonModule,  
     ConfirmDialogModule,
     GalleriaModule,
     InputNumberModule,
@@ -53,12 +46,14 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     CascadeSelectModule,
     CarouselModule,
     ToolbarModule,
-    RatingModule,
-    PaginatorModule,
-    TableModule,
+    RatingModule,  
     CalendarModule,
     CheckboxModule,
-    RadioButtonModule
+    RadioButtonModule,
+    TableModule,
+    DialogModule,
+    PaginatorModule,
+    ToastModule
 ],
  declarations: [ 
     
@@ -85,8 +80,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     RatingModule,
     PaginatorModule,
     TableModule,
-    RadioButtonModule
-
+    RadioButtonModule,
+    CheckboxModule, 
+    CalendarModule
 ],
 providers: [
     MessageService,

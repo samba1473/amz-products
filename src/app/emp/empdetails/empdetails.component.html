@@ -19,32 +19,31 @@
             <th>DepartMant</th>
             <th>DOB</th>
             <th>Date Of Joining</th>
+            <th>My Items</th>
             <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-data> 
-        <tr> 
+    <ng-template pTemplate="body" let-data>
+        <tr>
             <td  pFrozenColumn>{{data.empid}}</td>
-            <td>{{data.firstName}}</td>
-            <td  >{{data.middleName}}e</td>
-            <td >{{data.lastName}}</td> 
-            <td>{{data.gender}}</td>
-            <td>{{data.department}}</td>
-            <td > {{data.dob  }} </td>
-            <td>{{data.dateofjoining}}</td>
-            
-          
-
+            <td >{{data.fname}}</td>
+            <td >{{data.mname}}</td>
+            <td >{{data.lname}}</td>
+            <td >{{data.gender}}</td>
+            <td >{{data.department}}</td>
+            <td >{{data.dob  |  date: 'dd/MM/yyyy hh:mm a'}} </td>
+            <td >{{data.dateofjoining | date: 'dd/MM/yyyy hh:mm a'}}</td>
+            <td >{{data.myItems}}</td>
             <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
                 <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
-                <button pButton type="button" icon="pi pi-trash" iconPos="left" class="p-button-danger" ></button>               
+                <button pButton type="button" icon="pi pi-trash"     iconPos="left" class="p-button-danger" (click)="  deletetablerow(data.id)"></button>               
             </td>
         </tr>
     </ng-template>
 </p-table>
 
 
-<p-dialog header=" Add Student Data }}" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+<p-dialog header=" Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" #refval>
     <form class="updateUserPopup"  [formGroup]="addempdatadata"   (ngSubmit)="empaddeddata(addempdatadata.value)" >
         <!-- <span>
@@ -53,7 +52,7 @@
         </span> -->
         <span>
             <label for="float-input">First Name</label>
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="fname" >           
+            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="fname" >
         </span>
         <span>
             <label for="float-input">Middle Name</label>
@@ -65,23 +64,28 @@
         </span>    
         <span>
             <label for="float-input">Emp ID</label>
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >            
+            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >  -->
+            <p-inputNumber  styleClass="inputNumber" formControlName="empid" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>           
         </span>
         <span>
             <label for="float-input">dateofjoining</label>
             <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
-            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="dateofjoining" >            
+            <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="dateofjoining" >             -->
+            <br>
+            <p-calendar inputStyleClass="empcalender"  dateFormat="dd.mm.yy" appendTo="body" formControlName="dateofjoining" name="scheduletime" class="p-inputtext-sm" showTime="true" [hourFormat]="12"></p-calendar>
         </span>
         <span>
             <label for="float-input">Department</label>
             <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="department" > -->
             <p-dropdown [options]="cities" formControlName="department"   class="p-inputtext-sm" placeholder="Select a depertment" ></p-dropdown>            
-        </span>  
+        </span>
         <span>
             <label for="float-input">dob</label>
-            <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="sechdestination" formControlName="dob" >            
-        </span>  
+            <br>
+            <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="sechdestination" formControlName="dob" > -->
+            <p-calendar inputStyleClass="empcalender"   dateFormat="dd.mm.yy"  appendTo="body" name="sechdestination" formControlName="dob" showTime="true" [hourFormat]="12" class="p-inputtext-sm" ></p-calendar>            
+        </span>
         <span >
             <label for="float-input">Gender</label>
             <br>
@@ -89,20 +93,24 @@
             <!-- <input type="radio" formControlName="Gender"  value="Male" > Male
             <input type="radio" formControlName="Gender"  value="female" > Female  -->
 
-            <p-radioButton    value="Male"  formControlName="gender" ></p-radioButton> Male
-            <p-radioButton   value="female"  formControlName="gender" ></p-radioButton> Female 
+            <p-radioButton value="Male"     formControlName="gender" ></p-radioButton> Male
+            <p-radioButton value="female"   formControlName="gender" ></p-radioButton> Female 
 
         </span>  
-        <span >
+        <span class="w-100">
             <label for="float-input">Gender</label>
             <br>
            
-            <input type="checkbox" id="checkbox-1" value="laptop" formControlName="myValues" (change)="onchange($event)"/> Laptop
-            <input type="checkbox" id="checkbox-2" value="system" formControlName="myValues" (change)="onchange($event)"/> Sysyem 
-            <input type="checkbox" id="checkbox-3" value="Keyboard" formControlName="myValues" (change)="onchange($event)"/>Keyboard
+            <!-- <input type="checkbox" value=" laptop" formControlName="myItems" (change)="onchange($event)" /> Laptop
+            <input type="checkbox" value=" system" formControlName="myItems" (change)="onchange($event)"/> Sysyem 
+            <input type="checkbox" value=" Keyboard" formControlName="myItems" (change)="onchange($event)" /> Keyboard -->
+
+            <p-checkbox  value="Laptop"   [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> Laptop
+            <p-checkbox  value="System"   [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> System
+            <p-checkbox  value="Keyboard" [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> Keyboard
 
         </span>  
-        <p-button  type="submit" class="p-button-text">submit</p-button > 
+        <p-button  type="submit" class="p-button-text"  [disabled]="!addempdatadata.valid">submit</p-button > 
     </form>
         <!-- <ng-template pTemplate="footer">
             <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>

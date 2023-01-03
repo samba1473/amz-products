@@ -7,9 +7,16 @@ export class EmpdetailsService {
 
   constructor(private http:HttpClient) { }
 
-  private _url="http://localhost:3000/empDetails";
+  private _url="http://localhost:3000/empDetails/";
 
-getempdetails(){
-  return this.http.get(this._url)
-}
+    getempdetails(){
+      return this.http.get(this._url)
+    }
+    postemdData(id){
+      return this.http.post(this._url,id)
+    }
+    deleteempData(id){
+      return this.http.delete(this._url+id)
+    }
+
 }

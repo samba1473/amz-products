@@ -1892,16 +1892,6 @@
       "id": 107
     },
     {
-      "id": 108,
-      "Name": "sivarao",
-      "Gender": "0",
-      "Class": "357",
-      "Seat": "456",
-      "Eyes": "blue",
-      "ScheduleTime": "2023-12-12",
-      "ScheduleDestination": "ytd 7wyd "
-    },
-    {
       "Name": "siva sankar",
       "Gender": "0",
       "Class": "234",
@@ -2044,17 +2034,51 @@
       "status": "active"
     }
   ],
-  "empDetails":[
+  "empDetails": [
     {
-      "id":1,
-      "firstName":"samba",
-      "middleName":"siva",
-      "lastName":"rao",
-      "empid":1001,
-      "gender":"male",
-      "department":"developer",
-      "dob":"01/02/1993",
-      "dateofjoining":"01/02/2022"
+      "fname": "samba",
+      "mname": "siva",
+      "lname": "rao",
+      "empid": "10101",
+      "gender": "Male",
+      "department": "designer",
+      "dob": "2022-12-12",
+      "dateofjoining": "2023-12-23",
+      "myItems": [
+        "Laptop",
+        "System",
+        "Keyboard"
+      ],
+      "id": 1
+    },
+    {
+      "fname": "jhsyukdh",
+      "mname": "aqesd",
+      "lname": "asafa",
+      "empid": 1212,
+      "gender": "female",
+      "department": "tester",
+      "dob": "2023-01-04T10:16:48.000Z",
+      "dateofjoining": "2023-01-03T10:16:43.000Z",
+      "myItems": [
+        "System"
+      ],
+      "id": 2
+    },
+    {
+      "fname": "fdasghj",
+      "mname": "jtgrhb",
+      "lname": "gf",
+      "empid": 4545451,
+      "gender": "Male",
+      "department": "designer",
+      "dob": "2023-01-11T11:18:46.000Z",
+      "dateofjoining": "2023-01-24T23:18:00.000Z",
+      "myItems": [
+        "System",
+        "Keyboard"
+      ],
+      "id": 3
     }
   ]
 }
