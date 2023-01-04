@@ -7,33 +7,38 @@
     <!-- <button pButton type="button" label="Edit data" class="mb-4 p-button-warning"  [style.display]="checkBoxId ? 'block':'none'" ></button> -->
 </div>
 
-<p-table [value]="newEmpDetails"  [scrollable]="true" scrollDirection="both" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
-[rowsPerPageOptions]="[5,10,15,20]">
+<p-table [value]="newEmpDetails"  [scrollable]="true" scrollDirection="both" [paginator]="false" [rows]="5" [showCurrentPageReport]="true" 
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20]" >
     <ng-template pTemplate="header">
         <tr>
             <th  pFrozenColumn>ID</th>
             <th>First Name</th>
-            <th>Middle name</th>
-            <th>Last Name</th> 
+            <th>Last Name</th>
             <th>Gender</th>
             <th>DepartMant</th>
             <th>DOB</th>
             <th>Date Of Joining</th>
             <th>My Items</th>
+            <th>Probation</th>
             <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
-        <tr>
+        <tr [style.color]=" data. probation === 'in Completed' ? 'red':''">
             <td  pFrozenColumn>{{data.empid}}</td>
             <td >{{data.fname}}</td>
-            <td >{{data.mname}}</td>
             <td >{{data.lname}}</td>
             <td >{{data.gender}}</td>
             <td >{{data.department}}</td>
-            <td >{{data.dob  |  date: 'dd/MM/yyyy hh:mm a'}} </td>
-            <td >{{data.dateofjoining | date: 'dd/MM/yyyy hh:mm a'}}</td>
+            <!-- <td >{{data.dob  |  date: 'dd/MM/yyyy hh:mm a'}} </td> -->
+            <td >{{data.dob  |  date: 'dd/MM/yyyy'}} </td>
+            <td >{{data.dateofjoining | date: 'dd/MM/yyyy'}}</td>
             <td >{{data.myItems}}</td>
+            <!-- <td >
+                <span *ngIf="noOfDays  > 30">In Completed</span>
+                <span *ngIf="noOfDays  <  30"> Completed</span>
+            </td> -->
+            <td>{{data.probation}}</td>
             <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
                 <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
                 <button pButton type="button" icon="pi pi-trash"     iconPos="left" class="p-button-danger" (click)="  deletetablerow(data.id)"></button>               
@@ -41,9 +46,9 @@
         </tr>
     </ng-template>
 </p-table>
+  
 
-
-<p-dialog header=" Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+<p-dialog styleClass="emdaddformdialog" header=" Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" #refval>
     <form class="updateUserPopup"  [formGroup]="addempdatadata"   (ngSubmit)="empaddeddata(addempdatadata.value)" >
         <!-- <span>
@@ -64,6 +69,7 @@
         </span>    
         <span>
             <label for="float-input">Emp ID</label>
+            <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >  -->
             <p-inputNumber  styleClass="inputNumber" formControlName="empid" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>           
         </span>
@@ -72,7 +78,7 @@
             <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
             <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="dateofjoining" >             -->
             <br>
-            <p-calendar inputStyleClass="empcalender"  dateFormat="dd.mm.yy" appendTo="body" formControlName="dateofjoining" name="scheduletime" class="p-inputtext-sm" showTime="true" [hourFormat]="12"></p-calendar>
+            <p-calendar [maxDate]="date" inputStyleClass="empcalender"  dateFormat="dd/mm/yy" appendTo="body" formControlName="dateofjoining" name="scheduletime" class="p-inputtext-sm" ></p-calendar>
         </span>
         <span>
             <label for="float-input">Department</label>
@@ -84,7 +90,7 @@
             <label for="float-input">dob</label>
             <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="sechdestination" formControlName="dob" > -->
-            <p-calendar inputStyleClass="empcalender"   dateFormat="dd.mm.yy"  appendTo="body" name="sechdestination" formControlName="dob" showTime="true" [hourFormat]="12" class="p-inputtext-sm" ></p-calendar>            
+            <p-calendar [maxDate]="date" inputStyleClass="empcalender"   dateFormat="dd/mm/yy"  appendTo="body" name="sechdestination" formControlName="dob"    class="p-inputtext-sm" ></p-calendar>            
         </span>
         <span >
             <label for="float-input">Gender</label>

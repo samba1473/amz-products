@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,IterableDiffers,OnInit } from '@angular/core';
 import { EmpdetailsService } from '../empdetails.service';
 
 import { FormControl, FormGroup,FormArray, Validators } from '@angular/forms';
@@ -12,6 +12,14 @@ export class EmpdetailsComponent implements OnInit{
 
   constructor(private _serv:EmpdetailsService,  private http:HttpClient){}
 
+  date=new Date();
+  day = this.date.getDate();
+  month = this.date.getMonth() + 1;
+  year = this.date.getFullYear();
+  todayDate = `${this.day}/${this.month}/${this.year}`;
+
+  noOfDays:any;
+
   newEmpDetails:any[]=[];
   balanceFrozen: boolean = true;
   displayMaximizable:boolean=false;
@@ -19,7 +27,7 @@ export class EmpdetailsComponent implements OnInit{
 
   addempdatadata=new FormGroup({
     fname:new FormControl('',[Validators.required,Validators.minLength(4)]),
-    mname:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    mname:new FormControl('',[Validators.minLength(1)]),
     lname:new FormControl('',[Validators.required,Validators.minLength(1)]),
     empid:new FormControl('',[Validators.required,Validators.minLength(4)]),
     gender:new FormControl('',[Validators.required]),
@@ -37,9 +45,37 @@ export class EmpdetailsComponent implements OnInit{
   checkvalue:any[]=[]
 
   displayEmpData(){
+    this.noOfDays;
+    this.newEmpDetails=[]
     this._serv.getempdetails().subscribe((res:any)=>{
-      this.newEmpDetails=res
-     })
+      res.filter((aa)=>{
+        const ss=new Date(aa.dateofjoining);
+
+        var date_diff_indays = function(date1:any, date2:any) {
+          const dt1 = new Date(date1);
+          const dt2 = new Date(date2);
+          return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+        }       
+        this.noOfDays=date_diff_indays( ss,new Date())
+
+        if(this.noOfDays > 30){
+          aa.probation="completed"
+        }else{
+          aa.probation="in Completed"
+        }
+
+      if(aa.probation === "in Completed"){         
+        this.newEmpDetails.push(aa)
+      }
+      })
+      res.filter((bb)=>{ 
+        if(bb.probation !== "in Completed"){           
+          this.newEmpDetails.push(bb)
+        }
+      })
+      // this.newEmpDetails=res
+     })  
+       
   }
 
   onchange(event ){ 

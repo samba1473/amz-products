@@ -80,7 +80,7 @@ export class ProductsComponent implements OnInit ,DoCheck {
   }
       
   valueSelected(){
-    console.log("helllo samba");
+    // console.log("helllo samba");
     // console.log(this.myForm.value)
     this.productsData =[];
     this.loadSkeleton=true;
@@ -117,8 +117,6 @@ export class ProductsComponent implements OnInit ,DoCheck {
     this._productSerc.brandName=this.brandName; 
     
   }
-
- 
 
   addData(id)  {
     	this.UserId = id; 
@@ -166,7 +164,6 @@ viewMoreData(event:any){
     res.find((dd:any)=>{
       if(dd.id == this.viewMoreId){
         this.highlitedData.push(dd);
-        console.log(this.highlitedData);        
       }
     })
   })
