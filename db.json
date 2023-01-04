@@ -2090,6 +2090,20 @@
         "Laptop"
       ],
       "id": 10
+    },
+    {
+      "fname": "tsadyasgh",
+      "mname": "grsf",
+      "lname": "syduh",
+      "empid": "789456",
+      "gender": "Male",
+      "department": "designer",
+      "dob": "2022-12-05T18:30:00.000Z",
+      "dateofjoining": "2022-12-19T18:30:00.000Z",
+      "myItems": [
+        "Laptop"
+      ],
+      "id": 11
     }
   ]
 }

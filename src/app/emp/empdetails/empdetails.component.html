@@ -71,7 +71,9 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
             <label for="float-input">Emp ID</label>
             <br>
             <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >  -->
-            <p-inputNumber  styleClass="inputNumber" formControlName="empid" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>           
+            <input type="text" pInputText class="p-inputtext-sm"    pKeyFilter="int"  formControlName="empid"  >  
+            
+            <!-- <p-inputNumber  pKeyFilter="int"  styleClass="inputNumber" formControlName="empid" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>            -->
         </span>
         <span>
             <label for="float-input">dateofjoining</label>
@@ -102,7 +104,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
             <p-radioButton value="Male"     formControlName="gender" ></p-radioButton> Male
             <p-radioButton value="female"   formControlName="gender" ></p-radioButton> Female 
 
-        </span>  
+        </span>
         <span class="w-100">
             <label for="float-input">Gender</label>
             <br>
