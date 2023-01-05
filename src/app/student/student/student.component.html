@@ -38,7 +38,7 @@
                 <td>{{data.Class}}</td>
                 <td>{{data.Seat}}</td>
                 <td>{{data.Eyes}}</td>
-                <td ><p class="tableTsextEclipse" placement="top" >{{data.ScheduleTime  }}</p></td>
+                <td ><p class="tableTsextEclipse" placement="top" >{{data.ScheduleTime}}</p></td>
                 <td><p class="tableTsextEclipse" placement="top"  >{{data.ScheduleDestination}}</p></td>
                 
                 <td> 
@@ -110,10 +110,10 @@
         </ng-template> -->
 
     <div *ngIf="openstudentpopup">
-        <form class="updateUserPopup" [formGroup]="edituserdata"  (ngSubmit)="editstudentdata(edituserdata.value)">
+        <form class="updateUserPopup" [formGroup]="edituserdata" (ngSubmit)="editstudentdata(edituserdata.value)">
             <span>
                 <label for="float-input">id</label>
-                <input id="float-input"   readonly  class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" [(ngModel)]="id">             
+                <input id="float-input" readonly  class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" [(ngModel)]="id">             
             </span>
             <span>
                 <label for="float-input">Name</label> 
@@ -126,7 +126,7 @@
             <span>
                 <label for="float-input">Seat</label>
                 <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="Seat" [(ngModel)]="seat" >            
-            </span>    
+            </span>
             <span>
                 <label for="float-input">Eyes Color</label>
                 <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="Eyes" [(ngModel)]="eyes" >            

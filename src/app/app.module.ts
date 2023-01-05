@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
+import { EmitDataService } from './student/student/emitCartService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     NgbModule, 
   ], 
+  providers: [EmitDataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

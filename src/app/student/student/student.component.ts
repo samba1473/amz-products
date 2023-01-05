@@ -3,17 +3,22 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MessageService,ConfirmationService} from 'primeng/api';
+import { TopNavbarComponent } from 'src/app/top-navbar/top-navbar.component';
+import { EmitDataService } from './emitCartService'
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss']
+  styleUrls: ['./student.component.scss'],
+  providers: [TopNavbarComponent]
 })
 export class StudentComponent implements OnInit{
   constructor(
-    private _serv:StudentService, 
-    private http:HttpClient, 
-    private messageservice:MessageService,    
+    private _serv:StudentService,
+    private http:HttpClient,
+    private messageservice:MessageService,
     private confirmationService: ConfirmationService,
+    private EmitDataService: EmitDataService
+
     ){}
 
     val:any;
@@ -62,12 +67,11 @@ export class StudentComponent implements OnInit{
 
   getStudentdata(){
     this._serv.getstudentData().subscribe(data=>{
-     this.studentData = data ; 
-      
+     this.studentData = data ;  
+
      this.studentData = this.studentData.sort(
       (p1, p2) => (p1.Class < p2.Class) ? 1 : (p1.Class > p2.Class) ? -1 : 0);
-      
-
+     
       //   this.studentData = this.studentData.sort(
       // (p1, p2) => (p1.Gender < p2.Gender) ? 1 : (p1.Gender > p2.Gender) ? -1 : 0);
       // console.log(this.studentData);
@@ -130,12 +134,7 @@ export class StudentComponent implements OnInit{
     
   }
 
-  deletestudentData(id){ 
-    // this.http.delete("http://localhost:3000/studentsData/" + id).subscribe( )
-    // this.messageservice.add({severity:'info', summary:'Data Deleted Successfully', detail:'Via MessageService'});   
-    // this.getStudentdata()  
-
-
+  deletestudentData(id){   
     this.confirmationService.confirm({
       message: 'Are you sure   you want to Delete this Item ?',
             accept: () => {
@@ -146,6 +145,7 @@ export class StudentComponent implements OnInit{
     })
   }
 editstudentdata(e:any){
+  
   if(this.edituserdata.value.Gender === "Male"){
     this.edituserdata.value.Gender = "0" 
         
@@ -213,6 +213,7 @@ checkValue(id,event: any){
    
 }
   ngOnInit(): void {
+    this.EmitDataService.clicked(false)
     this.getStudentdata()
     
   }

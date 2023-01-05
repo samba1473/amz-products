@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import {MessageService,ConfirmationService} from 'primeng/api';
+import { EmitDataService } from '../student/student/emitCartService';
 
 @Component({
   selector: 'app-added-items',
@@ -12,7 +13,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
     private _selecteddata:ProductService,
     private messageService:MessageService,
     private confirmationService: ConfirmationService,
-
+    private EmitDataService:EmitDataService
   ){}
 
   showData:any[]=[];
@@ -23,7 +24,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
   showselectedData(){
     this._selecteddata.addselectedData().subscribe(
       show=>{
-        if(show.length > 0 ){          
+        if(show.length > 0 ){ 
           this.showData=show;
           this.totalItems = show.length; 
           this.show=true;
@@ -49,6 +50,7 @@ export class AddedItemsComponent implements OnInit,AfterViewInit{
   }
 ngOnInit(): void {
   this.showselectedData();  
+  this.EmitDataService.clicked(true)
 }
 
 ngAfterViewInit(): void {

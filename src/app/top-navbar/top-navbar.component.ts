@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from '../product.service';
+import { EmitDataService } from '../student/student/emitCartService'
 
 @Component({
   selector: 'app-top-navbar',
@@ -10,14 +11,16 @@ import { ProductService } from '../product.service';
 })
 export class TopNavbarComponent implements OnInit{
 
-  constructor(private rout:Router, private _productServ:ProductService, private http:HttpClient){}
+  constructor(private rout:Router, private _productServ:ProductService, private http:HttpClient, private EmitDataService: EmitDataService){}
   @Input() totalAddeedItems:any;
+  @Input() hideCart:boolean;
+
   brandName:any;
   firstName:any;
   lastName:any;
   showselectedData(){
     this.rout.navigate(["home/selectedProduct"])
-    console.log("click");    
+    // console.log("click");    
   }
   
 
@@ -33,5 +36,8 @@ export class TopNavbarComponent implements OnInit{
         }
       });
   })
+    this.EmitDataService.clickEvent.subscribe(hide =>{
+      this.hideCart = hide;
+    })
   }
 }

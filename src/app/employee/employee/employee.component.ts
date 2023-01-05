@@ -4,6 +4,7 @@ import {MessageService,ConfirmationService} from 'primeng/api';
 import {NgForm, Validators} from '@angular/forms';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import {EmitDataService } from '../../student/student/emitCartService'
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -14,7 +15,8 @@ export class EmployeeComponent implements OnInit{
     private _serv:ProductService,
     private messageService:MessageService,
     private confirmationService: ConfirmationService,
-    private http:HttpClient
+    private http:HttpClient,
+    private EmitDataService: EmitDataService
     ){
 
   }
@@ -99,6 +101,6 @@ export class EmployeeComponent implements OnInit{
   
   ngOnInit(): void {
     this.getallUsersData();
-    
+    this.EmitDataService.clicked(false)
   }
 }

@@ -1,130 +1,141 @@
-<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
-    <h2 class="brandName">Emp Data </h2>    
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3
+    productsTopBrandSection">
+    <h2 class="brandName">Emp Data </h2>
 </div>
 
 <div class="addStudentdataBtn d-flex justify-content-between">
-    <button pButton type="button" label="Add Student data" class="addstudentBtn mb-4" (click)=" openaddstdntpopup()" ></button>
-    <!-- <button pButton type="button" label="Edit data" class="mb-4 p-button-warning"  [style.display]="checkBoxId ? 'block':'none'" ></button> -->
+    <button pButton type="button" label="Add Student data" class="addstudentBtn
+        mb-4" (click)=" openaddstdntpopup()"></button>
 </div>
 
-<p-table [value]="newEmpDetails"  [scrollable]="true" scrollDirection="both" [paginator]="false" [rows]="5" [showCurrentPageReport]="true" 
-currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20]" >
+<p-table [value]="newTotaladta" [scrollable]="true" scrollDirection="both"
+    paginator="true" [rows]="5" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords}
+    entries" [rowsPerPageOptions]="[5,10,15,20]">
     <ng-template pTemplate="header">
         <tr>
-            <th  pFrozenColumn>ID</th>
+            <th pFrozenColumn>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Gender</th>
-            <th>DepartMant</th>
+            <th>DepartMent</th>
             <th>DOB</th>
             <th>Date Of Joining</th>
-            <th>My Items</th>
+            <th>Given Items</th>
             <th>Probation</th>
-            <th alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>Action</th>
+            <th alignFrozen="right" [frozen]="balanceFrozen" pFrozenColumn>Action</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
         <tr [style.color]=" data. probation === 'in Completed' ? 'red':''">
-            <td  pFrozenColumn>{{data.empid}}</td>
-            <td >{{data.fname}}</td>
-            <td >{{data.lname}}</td>
-            <td >{{data.gender}}</td>
-            <td >{{data.department}}</td>
+            <td pFrozenColumn>{{data.empid}}</td>
+            <td>{{data.fname}}</td>
+            <td>{{data.lname}}</td>
+            <td>{{data.gender}}</td>
+            <td>{{data.department}}</td>
             <!-- <td >{{data.dob  |  date: 'dd/MM/yyyy hh:mm a'}} </td> -->
-            <td >{{data.dob  |  date: 'dd/MM/yyyy'}} </td>
-            <td >{{data.dateofjoining | date: 'dd/MM/yyyy'}}</td>
-            <td >{{data.myItems}}</td>
+            <td>{{data.dob | date: 'dd/MM/yyyy'}} </td>
+            <td>{{data.dateofjoining | date: 'dd/MM/yyyy'}}</td>
+            <td>{{data.myItems}}</td>
             <!-- <td >
                 <span *ngIf="noOfDays  > 30">In Completed</span>
                 <span *ngIf="noOfDays  <  30"> Completed</span>
             </td> -->
             <td>{{data.probation}}</td>
-            <td class="d-flex" alignFrozen="right"  [frozen]="balanceFrozen" pFrozenColumn>
-                <button pButton type="button" icon="pi pi-user-edit" iconPos="left" class="p-button-success" ></button>
-                <button pButton type="button" icon="pi pi-trash"     iconPos="left" class="p-button-danger" (click)="  deletetablerow(data.id)"></button>               
+            <td class="d-flex" alignFrozen="right" [frozen]="balanceFrozen"
+                pFrozenColumn>
+                <button pButton type="button" icon="pi pi-user-edit"
+                    iconPos="left" class="p-button-success"></button>
+                <button pButton type="button" icon="pi pi-trash" iconPos="left"
+                    class="p-button-danger" (click)="deletetablerow(data.id)"></button>
             </td>
         </tr>
     </ng-template>
 </p-table>
-  
 
-<p-dialog styleClass="emdaddformdialog" header=" Add Student Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+
+<p-dialog styleClass="emdaddformdialog" header=" Add Student Data"
+    [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
+    [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" #refval>
-    <form class="updateUserPopup"  [formGroup]="addempdatadata"   (ngSubmit)="empaddeddata(addempdatadata.value)" >
-        <!-- <span>
-            <label for="float-input">id</label>  (ngSubmit)="addstudentdata(adduserdata.value)"
-            <input id="float-input"     class="p-inputtext-sm" type="text" pInputText name="id" formControlName="id" >             
-        </span> -->
+
+    <form class="updateUserPopup" [formGroup]="addempdatadata"
+        (ngSubmit)="empaddeddata(addempdatadata.value)">
+
         <span>
             <label for="float-input">First Name</label>
-            <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="name" formControlName="fname" >
+            <input id="float-input" class="p-inputtext-sm" type="text"
+                pInputText name="fname" formControlName="fname">
         </span>
         <span>
             <label for="float-input">Middle Name</label>
-            <input id="float-input" pInputText   class="p-inputtext-sm" type="text" pInputText name="class" formControlName="mname" >            
+            <input id="float-input" pInputText class="p-inputtext-sm"
+                type="text" pInputText name="mname" formControlName="mname">
         </span>
         <span>
             <label for="float-input">Last Name</label>
-            <input id="float-input" pInputText    pTooltip="enter seat" class="p-inputtext-sm" type="text" pInputText name="seat" formControlName="lname" >            
-        </span>    
+            <input id="float-input" pInputText pTooltip="enter seat"
+                class="p-inputtext-sm" type="text" pInputText name="lname"
+                formControlName="lname">
+        </span>
         <span>
             <label for="float-input">Emp ID</label>
             <br>
-            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="eyes" formControlName="empid" >  -->
-            <input type="text" pInputText class="p-inputtext-sm"    pKeyFilter="int"  formControlName="empid"  >  
-            
-            <!-- <p-inputNumber  pKeyFilter="int"  styleClass="inputNumber" formControlName="empid" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>            -->
+            <input type="text" pInputText class="p-inputtext-sm" name="empid"
+                pKeyFilter="int" formControlName="empid">
         </span>
         <span>
-            <label for="float-input">dateofjoining</label>
-            <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
-            <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="scheduletime" formControlName="dateofjoining" >             -->
+            <label for="float-input">Date Of Joining</label>
             <br>
-            <p-calendar [maxDate]="date" inputStyleClass="empcalender"  dateFormat="dd/mm/yy" appendTo="body" formControlName="dateofjoining" name="scheduletime" class="p-inputtext-sm" ></p-calendar>
+            <p-calendar [maxDate]="date" inputStyleClass="empcalender"
+            [showIcon]="true"  name="doj" dateFormat="dd/mm/yy" appendTo="body"
+                formControlName="dateofjoining" name="scheduletime"
+                class="p-inputtext-sm"></p-calendar>
         </span>
         <span>
             <label for="float-input">Department</label>
             <br>
-            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText name="sechdestination" formControlName="department" > -->
-            <p-dropdown [options]="cities" formControlName="department"   class="p-inputtext-sm" placeholder="Select a depertment" ></p-dropdown>            
+            <p-dropdown [options]="cities" formControlName="department"
+                name="departmant" class="p-inputtext-sm" placeholder="Select a
+                depertment"></p-dropdown>
         </span>
         <span>
-            <label for="float-input">dob</label>
+            <label for="float-input">DOB</label>
             <br>
-            <!-- <input id="float-input" class="p-inputtext-sm" type="date" pInputText name="sechdestination" formControlName="dob" > -->
-            <p-calendar [maxDate]="date" inputStyleClass="empcalender"   dateFormat="dd/mm/yy"  appendTo="body" name="sechdestination" formControlName="dob"    class="p-inputtext-sm" ></p-calendar>            
+            <p-calendar [maxDate]="date" inputStyleClass="empcalender"
+            [showIcon]="true" name="dob" dateFormat="dd/mm/yy" appendTo="body"
+                name="sechdestination" formControlName="dob"
+                class="p-inputtext-sm"></p-calendar>
         </span>
-        <span >
+        <span>
             <label for="float-input">Gender</label>
             <br>
-            <!-- <input id="float-input" class="p-inputtext-sm" type="text" pInputText  name="gender" formControlName="gender"  >              -->
-            <!-- <input type="radio" formControlName="Gender"  value="Male" > Male
-            <input type="radio" formControlName="Gender"  value="female" > Female  -->
-
-            <p-radioButton value="Male"     formControlName="gender" ></p-radioButton> Male
-            <p-radioButton value="female"   formControlName="gender" ></p-radioButton> Female 
-
+            <p-radioButton value="Male" name="gender" formControlName="gender"></p-radioButton>
+            Male
+            <p-radioButton value="female" name="gender" formControlName="gender"></p-radioButton>
+            Female
         </span>
         <span class="w-100">
             <label for="float-input">Gender</label>
             <br>
-           
-            <!-- <input type="checkbox" value=" laptop" formControlName="myItems" (change)="onchange($event)" /> Laptop
-            <input type="checkbox" value=" system" formControlName="myItems" (change)="onchange($event)"/> Sysyem 
-            <input type="checkbox" value=" Keyboard" formControlName="myItems" (change)="onchange($event)" /> Keyboard -->
-
-            <p-checkbox  value="Laptop"   [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> Laptop
-            <p-checkbox  value="System"   [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> System
-            <p-checkbox  value="Keyboard" [formControl]="addempdatadata.controls['myItems']"  (change)="onchange($event)"> </p-checkbox> Keyboard
-
-        </span>  
-        <p-button  type="submit" class="p-button-text"  [disabled]="!addempdatadata.valid">submit</p-button > 
+            <p-checkbox value="Laptop"
+                [formControl]="addempdatadata.controls['myItems']"
+                (change)="onchange($event)"> </p-checkbox> Laptop
+            <p-checkbox value="System"
+                [formControl]="addempdatadata.controls['myItems']"
+                (change)="onchange($event)"> </p-checkbox> System
+            <p-checkbox value="Keyboard"
+                [formControl]="addempdatadata.controls['myItems']"
+                (change)="onchange($event)"> </p-checkbox> Keyboard
+        </span>
+        <p-button type="submit" class="p-button-text"
+            [disabled]="!addempdatadata.valid">submit</p-button>
     </form>
-        <!-- <ng-template pTemplate="footer">
-            <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
-            <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
-        </ng-template> -->
-
-     
-    
 </p-dialog>
+
+ 
+
+
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Confirmation" styleClass="confirmPopup" icon="pi
+    pi-exclamation-triangle"></p-confirmDialog>

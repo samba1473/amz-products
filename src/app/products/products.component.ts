@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { Router } from '@angular/router';
+import { EmitDataService } from '../student/student/emitCartService';
 
 @Component({
   selector: 'app-products',
@@ -18,7 +19,8 @@ export class ProductsComponent implements OnInit ,DoCheck {
     private http:HttpClient, 
     private messageService: MessageService,
     public rout:Router,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private EmitDataService:EmitDataService
     ) {
     this.cities = [
       {name: 'All Products'},
@@ -172,7 +174,7 @@ viewMoreData(event:any){
   async ngOnInit() {
     this.loadSkeleton=true
     await this.getProductData();   
-    
+    this.EmitDataService.clicked(true)
   }
   ngDoCheck(): void { 
   }

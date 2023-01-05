@@ -555,21 +555,6 @@
   ],
   "selectedItems": [
     {
-      "id": 3,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
-      ]
-    },
-    {
       "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
@@ -586,6 +571,25 @@
         "https://i.dummyjson.com/data/products/1/3.jpg",
         "https://i.dummyjson.com/data/products/1/4.jpg",
         "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Microsoft Surface Laptop 4",
+      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+      "price": 1499,
+      "discountPercentage": 10.23,
+      "rating": 4.43,
+      "stock": 68,
+      "brand": "Microsoft Surface",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/8/1.jpg",
+        "https://i.dummyjson.com/data/products/8/2.jpg",
+        "https://i.dummyjson.com/data/products/8/3.jpg",
+        "https://i.dummyjson.com/data/products/8/4.jpg",
+        "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
       ]
     }
   ],
@@ -2036,74 +2040,34 @@
   ],
   "empDetails": [
     {
-      "fname": "xcfbdfb",
-      "mname": "xdfxdfb",
-      "lname": "xvxb",
-      "empid": 47534,
+      "fname": "wsefsweg",
+      "mname": "sadasd",
+      "lname": "asfad",
+      "empid": "25243",
       "gender": "Male",
-      "department": "developer",
-      "dob": "2023-01-02T18:30:00.000Z",
-      "dateofjoining": "2022-09-30T18:30:00.000Z",
-      "myItems": [
-        "Keyboard"
-      ],
-      "id": 6
-    },
-    {
-      "fname": "ergrg",
-      "mname": "sdgs",
-      "lname": "sdsd",
-      "empid": 3223,
-      "gender": "Male",
-      "department": "developer",
-      "dob": "2023-01-09T18:30:00.000Z",
-      "dateofjoining": "2022-12-06T18:30:00.000Z",
-      "myItems": [
-        "System"
-      ],
-      "id": 8
-    },
-    {
-      "fname": "srgsdg",
-      "mname": "sdsd",
-      "lname": "sdsad",
-      "empid": 24532,
-      "gender": "female",
       "department": "tester",
-      "dob": "2023-01-02T18:30:00.000Z",
+      "dob": "2001-05-22T18:30:00.000Z",
       "dateofjoining": "2022-10-31T18:30:00.000Z",
       "myItems": [
-        "System"
-      ],
-      "id": 9
-    },
-    {
-      "fname": "asasf",
-      "mname": "aasf",
-      "lname": "asaf",
-      "empid": 32423,
-      "gender": "female",
-      "department": "tester",
-      "dob": "2023-01-02T18:30:00.000Z",
-      "dateofjoining": "2023-01-01T18:30:00.000Z",
-      "myItems": [
-        "Laptop"
+        "System",
+        "Laptop",
+        "Keyboard"
       ],
       "id": 10
     },
     {
-      "fname": "tsadyasgh",
-      "mname": "grsf",
-      "lname": "syduh",
-      "empid": "789456",
-      "gender": "Male",
-      "department": "designer",
-      "dob": "2022-12-05T18:30:00.000Z",
-      "dateofjoining": "2022-12-19T18:30:00.000Z",
+      "fname": "asfasdf",
+      "mname": "asfaf",
+      "lname": "asfasf",
+      "empid": "235235",
+      "gender": "female",
+      "department": "developer",
+      "dob": "2023-01-02T18:30:00.000Z",
+      "dateofjoining": "2022-12-22T18:30:00.000Z",
       "myItems": [
-        "Laptop"
+        "Keyboard"
       ],
-      "id": 11
+      "id": 12
     }
   ]
 }

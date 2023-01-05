@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EmpdetailsRoutingModule } from './empdetails-routing.module';
 import { EmpdetailsComponent } from './empdetails.component'; 
-import { SharedModule } from 'src/app/sharedModule.module'; 
+import { SharedModule } from 'src/app/sharedModule.module';
 @NgModule({
   declarations: [
     EmpdetailsComponent
