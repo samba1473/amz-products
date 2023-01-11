@@ -7,9 +7,18 @@ export class StudentService {
 
   constructor(private http:HttpClient) { }
 
-  _studentData="http://localhost:3000/studentsData";
+ private  _studentData="http://localhost:3000/studentsData/";
 
   getstudentData(){
     return this.http.get(this._studentData)
+  }
+  deletestudentData(id){
+    return this.http.delete(this._studentData+id)
+  }
+  poststudentdata(data){
+    return this.http.post(this._studentData,data);
+  }
+  editstudentdata(id,data){
+    return this.http.put(this._studentData+ id, data)
   }
 }

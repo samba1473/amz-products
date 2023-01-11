@@ -22,7 +22,7 @@
             <th>DOB</th>
             <th>Date Of Joining</th>
             <th>Given Items</th>
-            <th>Probation</th>
+            <th>Probation</th> 
             <th alignFrozen="right" [frozen]="balanceFrozen" pFrozenColumn>Action</th>
         </tr>
     </ng-template>
@@ -37,11 +37,12 @@
             <td>{{data.dob | date: 'dd/MM/yyyy'}} </td>
             <td>{{data.dateofjoining | date: 'dd/MM/yyyy'}}</td>
             <td>{{data.myItems}}</td>
+           
             <!-- <td >
                 <span *ngIf="noOfDays  > 30">In Completed</span>
                 <span *ngIf="noOfDays  <  30"> Completed</span>
             </td> -->
-            <td>{{data.probation}}</td>
+            <td>{{data.probation}}</td> 
             <td class="d-flex" alignFrozen="right" [frozen]="balanceFrozen"
                 pFrozenColumn>
                 <button pButton type="button" icon="pi pi-user-edit"

@@ -10,12 +10,12 @@ export class EmpdetailsService {
   private _url="http://localhost:3000/empDetails/";
 
     getempdetails(){
-      return this.http.get(this._url)
+      return this.http.get(this._url)   
     }
-    postemdData(id){
+    postemdData(id:any){
       return this.http.post(this._url,id)
     }
-    deleteempData(id){
+    deleteempData(id:any){
       return this.http.delete(this._url+id)
     }
 

@@ -61,7 +61,8 @@ export class EmpdetailsComponent implements OnInit {
     this.newgreenData = [];
     this._serv.getempdetails().subscribe((res: any) => {
       res.filter((aa: any) => {
-
+        console.log(aa);
+        
         const ss = new Date(aa.dateofjoining);
         var date_diff_indays = function (date1: any, date2: any) {
           const dt1 = new Date(date1);
@@ -70,9 +71,9 @@ export class EmpdetailsComponent implements OnInit {
         }
         this.noOfDays = date_diff_indays(ss, new Date())
         if (this.noOfDays > 30) {
-          aa.probation = "completed"
+          aa.probation = "completed";
         } else {
-          aa.probation = "in Completed"
+          aa.probation = "in Completed"; 
         }
 
         if (aa.probation === "in Completed") {
@@ -86,7 +87,6 @@ export class EmpdetailsComponent implements OnInit {
       })
       this.newTotaladta = this.newredData.concat(this.newgreenData)
     })
-
   }
 
   onchange(event) {
@@ -104,7 +104,6 @@ export class EmpdetailsComponent implements OnInit {
     if (this.addempdatadata.value.myItems.length > 0) {
       this.addempdatadata.value.myItems = [...new Set(this.addempdatadata.value.myItems)];
     }
-
     this.confirmationService.confirm({
       message: 'Are you sure you want to Add this Item ?',
       accept: () => {

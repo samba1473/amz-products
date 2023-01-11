@@ -53,7 +53,7 @@ import { ToastModule } from './components/toast/toast';
     TableModule,
     DialogModule,
     PaginatorModule,
-    ToastModule
+    ToastModule 
 ],
  declarations: [ 
     
