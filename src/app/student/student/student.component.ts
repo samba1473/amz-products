@@ -137,7 +137,7 @@ deletestudentData(id){
             accept: () => { 
               this._serv.deletestudentData(id).subscribe()
               this.messageservice.add({severity:'info', summary:'Data Deleted Successfully', detail:'Via MessageService'});   
-              this.getStudentdata() 
+              this.getStudentdata()
             } 
     })
 }
@@ -155,7 +155,7 @@ editstudentdata(e:any){
                 this._serv.editstudentdata(this.edituserdata.value.id,this.edituserdata.value).subscribe((data)=>{
                   this.messageservice.add({severity:'success', summary:'Data Updated Successfully', detail:'Via MessageService'});   
                 },error=>{
-                  console.log("error");                  
+                  console.log("error");
                 })
                 this.edituserdata.reset()
                 this.displayMaximizable=false;

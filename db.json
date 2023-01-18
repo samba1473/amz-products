@@ -2084,6 +2084,97 @@
         "Keyboard"
       ],
       "id": 13
+    },
+    {
+      "fname": "sdrs",
+      "mname": "sdsdf",
+      "lname": "df",
+      "empid": "5478412",
+      "gender": "female",
+      "department": "tester",
+      "dob": "2023-01-03T18:30:00.000Z",
+      "dateofjoining": "2022-12-31T18:30:00.000Z",
+      "myItems": [
+        "System",
+        "Laptop"
+      ],
+      "id": 14
+    }
+  ],
+  "saleryDetails": [
+    {
+      "id": 1,
+      "name": "samba",
+      "joiningDate": "2023-01-03",
+      "salery": 200000,
+      "department": "designer",
+      "totleSalery": 454545
+    },
+    {
+      "id": 2,
+      "name": "siva",
+      "joiningDate": "2023-01-03",
+      "salery": 200000,
+      "department": "developer",
+      "totleSalery": 454545
+    },
+    {
+      "id": 3,
+      "name": "Vijay",
+      "joiningDate": "2023-01-03",
+      "salery": 200000,
+      "department": "tester",
+      "totleSalery": 454545
+    },
+    {
+      "id": 4,
+      "name": "Ajay",
+      "joiningDate": "2023-01-03",
+      "salery": 200000,
+      "department": "HR",
+      "totleSalery": 454545
+    },
+    {
+      "id": 5,
+      "name": "Sanjay",
+      "joiningDate": "2023-01-03",
+      "salery": 200000,
+      "department": "developer",
+      "totleSalery": 454545
+    }
+  ],
+  "updateedSaleryDetails": [
+    {
+      "id": 20,
+      "basic": 455778,
+      "hra": 47522,
+      "lta": 574210,
+      "splallowence": 445,
+      "foodAllowence": 4545
+    },
+    {
+      "id": 1,
+      "basic": 52525,
+      "hra": 235235,
+      "lta": 235235,
+      "splallowence": 352,
+      "foodAllowence": 235253
+    },     
+    {
+      "id": 3,
+      "basic": 234,
+      "hra": 21342134,
+      "lta": 3414,
+      "splallowence": 1414,
+      "foodAllowence": 1142124
+    },
+    {
+      "id": 5,
+      "basic": 23234,
+      "hra": 34234,
+      "lta": 234234,
+      "splallowence": 23234,
+      "foodAllowence": 23234234
     }
   ]
 }

@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
+    <h2 class="brandName">Salery Data </h2>    
+</div>
+
+<div class="addStudentdataBtn d-flex justify-content-between">
+    <!-- <button pButton type="button" label="Add Student data" class="addstudentBtn mb-4" (click)=" openaddstdntpopup()" ></button>
+    <button pButton type="button" label="Edit data" class="mb-4 p-button-warning"  [style.display]="checkBoxId ? 'block':'none'" ></button> -->
+</div>
+
+<table class="table table-responsive">
+    <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>JOINING DATE</th>
+        <th>Department</th>
+        <th>SALERY</th>
+        <th>Add Salery</th>
+    </thead>
+    <tbody>
+       <tr *ngFor="let data of gerempDetails">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.joiningDate}}</td>
+        <td>{{data.department}}</td>
+        <td>{{data.ee}}</td>
+        <td>
+            <button  [style.display]="data.ee != null || data.ee != undefined ? 'none':'block'" pButton type="button" label="Add Salery" class="addstudentBtn  p-button-warning" (click)=" openPopup(data.id)" ></button>
+            <button  [style.display]="data.ee === null || data.ee === undefined ? 'none':'block'" pButton type="button" label="Update Salery" class="addstudentBtn   p-button-help"   ></button>
+        </td>
+       </tr>
+    </tbody>
+</table>
+
+
+
+<p-dialog header="Add Salery" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" #refval>
+    <form class="updateUserPopup"[formGroup]="addsalerydata"  (ngSubmit)="updatesaleryData()">         
+        <span>
+            <label for="float-input">Basic</label> 
+            <input id="float-input"  pKeyFilter="int" class="p-inputtext-sm" type="number" pInputText name="basic"  formControlName="basic">           
+        </span>
+        <span>
+            <label for="float-input">HRA</label>
+            <input id="float-input" pInputText pKeyFilter="int" class="p-inputtext-sm" type="number" pInputText name="hra" formControlName="hra">            
+        </span>
+        <span>
+            <label for="float-input">LTA</label>
+            <input id="float-input" pInputText  pKeyFilter="int" pTooltip="enter seat" class="p-inputtext-sm" type="number" pInputText name="seat" formControlName="lta" >            
+        </span>    
+        <span>
+            <label for="float-input">Special Allowence</label>
+            <input id="float-input" pKeyFilter="int" class="p-inputtext-sm" type="number" pInputText name="eyes" formControlName="splallowence">            
+        </span>
+        <span>
+            <label for="float-input">Food Allowence</label>
+            <!-- <p-calendar fogrmControlName="date" class="p-inputtext-sm" name="scheduletime" pInputText formControlName="scheduletime"></p-calendar> -->
+            <input id="float-input" pKeyFilter="int" class="p-inputtext-sm" type="number" pInputText name="scheduletime" formControlName="foodAllowence" >            
+        </span>
+       
+        
+        <p-button  type="submit" class="p-button-text">submit</p-button > 
+    </form>
+        <!-- <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayMaximizable=false" label="No"></p-button>
+        </ng-template> --> 
+    
+</p-dialog>

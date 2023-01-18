@@ -60,8 +60,7 @@ export class EmpdetailsComponent implements OnInit {
     this.newredData = [];
     this.newgreenData = [];
     this._serv.getempdetails().subscribe((res: any) => {
-      res.filter((aa: any) => {
-        console.log(aa);
+      res.filter((aa: any) => { 
         
         const ss = new Date(aa.dateofjoining);
         var date_diff_indays = function (date1: any, date2: any) {
@@ -70,10 +69,11 @@ export class EmpdetailsComponent implements OnInit {
           return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
         }
         this.noOfDays = date_diff_indays(ss, new Date())
+        
         if (this.noOfDays > 30) {
           aa.probation = "completed";
         } else {
-          aa.probation = "in Completed"; 
+          aa.probation = "in Completed";
         }
 
         if (aa.probation === "in Completed") {
