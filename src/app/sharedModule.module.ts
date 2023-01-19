@@ -25,6 +25,7 @@ import { TableModule } from './components/table/table';
 import { DialogModule } from './components/dialog/dialog';
 import { PaginatorModule } from './components/paginator/paginator';
 import { ToastModule } from './components/toast/toast';
+import {MenuModule} from 'primeng/menu';
 @NgModule({
  imports:      [ 
     CommonModule, 
@@ -53,7 +54,8 @@ import { ToastModule } from './components/toast/toast';
     TableModule,
     DialogModule,
     PaginatorModule,
-    ToastModule 
+    ToastModule ,
+    MenuModule
 ],
  declarations: [ 
     
@@ -82,7 +84,8 @@ import { ToastModule } from './components/toast/toast';
     TableModule,
     RadioButtonModule,
     CheckboxModule, 
-    CalendarModule
+    CalendarModule,
+    MenuModule
 ],
 providers: [
     MessageService,

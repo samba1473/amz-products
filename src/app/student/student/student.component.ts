@@ -121,11 +121,11 @@ addstudentdata(e:any){
                   this.messageservice.add({severity:'success', summary:'Data Added Successfully', detail:'Via MessageService'});    
                 },
                   error=>{
-                    console.log("error");            
+                    console.log("error");
                   })
                 this.adduserdata.reset()  
                 this.displayMaximizable=false;
-                this.getStudentdata() 
+                this.getStudentdata()
               } 
     })
   

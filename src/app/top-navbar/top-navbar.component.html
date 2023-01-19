@@ -8,7 +8,8 @@
     
     <div class="p-toolbar-group-right topRightBtnsDivs"> 
         <button pButton type="button" *ngIf="hideCart" (click)="showselectedData()" label="{{totalAddeedItems}} Cart Items" icon="pi pi-cart-plus" class="p-button-outlined p-button-rounded p-button-success position-relative totalitemsBtn">  </button>
-        <button pButton type="button"  class="p-button-outlined p-button-rounded topNav_profileBTN" > {{firstName | uppercase}}{{lastName |uppercase}}</button>
-
+        <button pButton type="button"  class="p-button-outlined p-button-rounded topNav_profileBTN"   (click)="menu.toggle($event)"> {{firstName | uppercase}}{{lastName |uppercase}}</button>
+        <p-menu styleClass="ProfilePopup" #menu [popup]="true" [model]="items"></p-menu>
+        <!-- <button type="button" pButton icon="pi pi-list" label="Show" (click)="menu.toggle($event)"></button> -->
     </div>
   </p-toolbar>

@@ -87,7 +87,7 @@ export class ProductsComponent implements OnInit ,DoCheck {
     this.productsData =[];
     this.loadSkeleton=true;
     this._productSerc.gaeProductData().subscribe((res: any[])=>{     
-      res.filter(item=>{         
+      res.filter(item=>{
           if( item.category === this.myForm.value.filterProduct.name)
           {
             
@@ -110,7 +110,7 @@ export class ProductsComponent implements OnInit ,DoCheck {
               this.loadSkeleton=false;
           }else if(this.myForm.value.filterProduct.name === 'All Products'){
             this.loadSkeleton= true;
-            this.productsData.push(item);  
+            this.productsData.push(item);
             this.loadSkeleton=false;         
           }          
       })       
@@ -160,7 +160,7 @@ showselectedData(){
 viewMoreData(event:any){  
   this.displayMaximizable=true;
   this.viewMoreId = event.target.id; 
-  this.highlitedData=[]
+  this.highlitedData=[];
   // console.log(this.viewMoreId);
   this._productSerc.gaeProductData().subscribe(res=>{
     res.find((dd:any)=>{

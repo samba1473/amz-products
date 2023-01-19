@@ -14,6 +14,7 @@ export class SaleryComponent implements  OnInit{
   saleryclickID:any;
   totalsal:any;
   aa:any;
+  mergedData:any[]=[]; 
   constructor(
     private EmitDataService:EmitDataService,
     private _serv:SaleryService
@@ -30,21 +31,49 @@ export class SaleryComponent implements  OnInit{
   })
 private totalSalval;
 
+
+
   getsalEmpDetrails(){
-    this.totalsal;
+    this.totalsal; 
     this.addsalerydata.value.id=this.saleryclickID
     this._serv.getsalEmpDetails().subscribe(data=>{
-       this.gerempDetails=data
+       this.gerempDetails=data; 
+      //  this.mergedData = data 
       this.gerempDetails.find((ress:any)=>{
         this._serv.getTotalsaleryVal().subscribe(dd=>{
           this.totalSalval=dd;
           this.totalSalval.find((reqq:any)=>{
             if(ress.id == reqq.id){
-              this.totalsal = reqq.basic + 
-                              reqq.hra + 
-                              reqq.lta + 
-                              reqq.splallowence +
-                              reqq.foodAllowence
+              const aaa=ress
+              const bbb=reqq
+              // console.log(aaa);
+              // console.log(bbb);
+              const obj3 = {...aaa, ...bbb};
+              const ght =[obj3]
+              console.log(ght);   
+              this.gerempDetails.push(obj3)
+              console.log(this.gerempDetails); 
+              
+              // this.gerempDetails.push(obj3) 
+              // console.log( this.gerempDetails);
+              
+              
+              // console.log(sss);
+              
+              // const seen = new Set();
+              // this.gerempDetails = this.gerempDetails.filter(el => {
+              //  const duplicate = seen.has(el.id);
+              //   seen.add(el.id);
+              //   return !duplicate;                
+              // });
+              // console.log(this.gerempDetails);
+              this.mergedData.push(obj3);
+              // console.log(this.mergedData); 
+              this.totalsal = obj3.basic + 
+                              obj3.hra + 
+                              obj3.lta + 
+                              obj3.splallowence +
+                              obj3.foodAllowence
               
               if(10000 < this.totalsal && this.totalsal < 300000){
                 this.totalsal= this.totalsal*15/100
@@ -57,22 +86,60 @@ private totalSalval;
               }else if( this.totalsal > 1600001){
                 this.totalsal= this.totalsal*40/100
               }
-             ress.ee=this.totalsal              
+             ress.ee=this.totalsal  
+             
+                      
             }
+           
           })
+         
+          // this.mergedData.push(ress)
+          // const seen = new Set();
+          //     this.mergedData = this.mergedData.filter(el => {
+          //      const duplicate = seen.has(el.id);
+          //       seen.add(el.id);
+          //       return !duplicate;                
+          //     });
+          //     this.mergedData.find((rrr:any)=>{
+          //       if(rrr.basic != null && rrr.basic !=undefined){
+          //         this.totalsal = rrr.basic + 
+          //                         rrr.hra + 
+          //                         rrr.lta + 
+          //                         rrr.splallowence +
+          //                         rrr.foodAllowence
+          //           if(10000 < this.totalsal && this.totalsal < 300000){
+          //             this.totalsal= this.totalsal*15/100
+          //           }else if(30001 < this.totalsal && this.totalsal < 700000){
+          //             this.totalsal= this.totalsal*25/100
+          //           }else if(700001 < this.totalsal && this.totalsal < 1200000){
+          //             this.totalsal= this.totalsal*30/100
+          //           }else if(1200001 < this.totalsal && this.totalsal < 1600000){
+          //             this.totalsal= this.totalsal*35/100
+          //           }else if( this.totalsal > 1600001){
+          //             this.totalsal= this.totalsal*40/100
+          //           }
+          //           rrr.ee=this.totalsal 
+                  
+          //       }else{
+          //         rrr.ee;
+          //       }
+               
+               
+          //       console.log(rrr.ee);
+                
+          //     })
+             
+          // console.log(this.mergedData);
+          
         })
         
       })
-      // gerempDetails
-      Object.keys(this.gerempDetails).forEach(key => { console.log(this.gerempDetails[key] , this.gerempDetails[key]) })
-      for (var key in this.gerempDetails) {
-        if (this.gerempDetails.hasOwnProperty(key)) {
-            console.log(key + " -> " + this.gerempDetails[key]);
-        }
-      }
+      
     })
    
   }
+
+
 
   openPopup(id:any){
     this.displayMaximizable=true;
@@ -80,19 +147,22 @@ private totalSalval;
     console.log(this.saleryclickID);    
   }
 
-  updatesaleryData(){
+ updatesaleryData(){
     this.addsalerydata.value.id=this.saleryclickID
     console.log(this.addsalerydata.value);
-    this._serv.postupdatedSaleryDetails(this.addsalerydata.value).subscribe((data)=>{
+  this._serv.postupdatedSaleryDetails(this.addsalerydata.value).subscribe((data)=>{
       console.log("success");
+    
     })    
-    this.getsalEmpDetrails() 
+    
     this.addsalerydata.reset()
     this.displayMaximizable=false;
+   this.getsalEmpDetrails()  
   }
   ngOnInit(): void {
     this. getsalEmpDetrails();
     this.EmitDataService.clicked(false)
+   
 
   } 
 }
