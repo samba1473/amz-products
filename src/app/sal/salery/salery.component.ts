@@ -14,7 +14,8 @@ export class SaleryComponent implements  OnInit{
   saleryclickID:any;
   totalsal:any;
   aa:any;
-  mergedData:any[]=[]; 
+  sum=0;
+  ss=0;
   constructor(
     private EmitDataService:EmitDataService,
     private _serv:SaleryService
@@ -22,119 +23,81 @@ export class SaleryComponent implements  OnInit{
 
   addsalerydata=new FormGroup({
     id:new FormControl(),
-    basic:new FormControl(),
-    hra:new FormControl(),
-    lta:new FormControl(),
-    splallowence:new FormControl(),
-    foodAllowence:new FormControl(),
+    basic:new FormControl('',[Validators.required]),
+    hra:new FormControl('',[Validators.required]),
+    lta:new FormControl('',[Validators.required]),
+    splallowence:new FormControl('',[Validators.required]),
+    foodAllowence:new FormControl('',[Validators.required]),
 
   })
 private totalSalval;
 
 
 
-  getsalEmpDetrails(){
+  getsalEmpDetrails(){  
     this.totalsal; 
     this.addsalerydata.value.id=this.saleryclickID
     this._serv.getsalEmpDetails().subscribe(data=>{
-       this.gerempDetails=data; 
-      //  this.mergedData = data 
+       this.gerempDetails=data;  
       this.gerempDetails.find((ress:any)=>{
         this._serv.getTotalsaleryVal().subscribe(dd=>{
           this.totalSalval=dd;
           this.totalSalval.find((reqq:any)=>{
             if(ress.id == reqq.id){
               const aaa=ress
-              const bbb=reqq
-              // console.log(aaa);
-              // console.log(bbb);
+              const bbb=reqq 
               const obj3 = {...aaa, ...bbb};
-              const ght =[obj3]
-              console.log(ght);   
-              this.gerempDetails.push(obj3)
-              console.log(this.gerempDetails); 
               
-              // this.gerempDetails.push(obj3) 
-              // console.log( this.gerempDetails);
-              
-              
-              // console.log(sss);
-              
-              // const seen = new Set();
-              // this.gerempDetails = this.gerempDetails.filter(el => {
-              //  const duplicate = seen.has(el.id);
-              //   seen.add(el.id);
-              //   return !duplicate;                
-              // });
-              // console.log(this.gerempDetails);
-              this.mergedData.push(obj3);
-              // console.log(this.mergedData); 
-              this.totalsal = obj3.basic + 
-                              obj3.hra + 
-                              obj3.lta + 
-                              obj3.splallowence +
-                              obj3.foodAllowence
-              
-              if(10000 < this.totalsal && this.totalsal < 300000){
-                this.totalsal= this.totalsal*15/100
-              }else if(30001 < this.totalsal && this.totalsal < 700000){
-                this.totalsal= this.totalsal*25/100
-              }else if(700001 < this.totalsal && this.totalsal < 1200000){
-                this.totalsal= this.totalsal*30/100
-              }else if(1200001 < this.totalsal && this.totalsal < 1600000){
-                this.totalsal= this.totalsal*35/100
-              }else if( this.totalsal > 1600001){
-                this.totalsal= this.totalsal*40/100
-              }
-             ress.ee=this.totalsal  
-             
+              this.gerempDetails = this.gerempDetails.filter(function( obj ) {
+                return obj.id !== ress.id;
+              });
+ 
+              this.gerempDetails.unshift(obj3);  
+
+              this.gerempDetails.sort((a, b) => {
+                return a.id - b.id;
+            });
+              console.log(this.gerempDetails);
+
+              this.gerempDetails.find((ress:any)=>{ 
+                if(ress.basic != null && ress.basic !=undefined){
+                  this.totalsal = ress.basic + 
+                                  ress.hra + 
+                                  ress.lta +
+                                  ress.splallowence +
+                                  ress.foodAllowence
+            
+                      if(10000 < this.totalsal && this.totalsal < 300000){
+                        this.totalsal= this.totalsal*15/100
+                      }else if(30001 < this.totalsal && this.totalsal < 700000){
+                      this.totalsal= this.totalsal*25/100
+                      }else if(700001 < this.totalsal && this.totalsal < 1200000){
+                      this.totalsal= this.totalsal*30/100
+                      }else if(1200001 < this.totalsal && this.totalsal < 1600000){
+                      this.totalsal= this.totalsal*35/100
+                      }else if( this.totalsal > 1600001){
+                      this.totalsal= this.totalsal*40/100
+                      }
+                      // ress.ee=this.totalsal 
                       
-            }
-           
-          })
-         
-          // this.mergedData.push(ress)
-          // const seen = new Set();
-          //     this.mergedData = this.mergedData.filter(el => {
-          //      const duplicate = seen.has(el.id);
-          //       seen.add(el.id);
-          //       return !duplicate;                
-          //     });
-          //     this.mergedData.find((rrr:any)=>{
-          //       if(rrr.basic != null && rrr.basic !=undefined){
-          //         this.totalsal = rrr.basic + 
-          //                         rrr.hra + 
-          //                         rrr.lta + 
-          //                         rrr.splallowence +
-          //                         rrr.foodAllowence
-          //           if(10000 < this.totalsal && this.totalsal < 300000){
-          //             this.totalsal= this.totalsal*15/100
-          //           }else if(30001 < this.totalsal && this.totalsal < 700000){
-          //             this.totalsal= this.totalsal*25/100
-          //           }else if(700001 < this.totalsal && this.totalsal < 1200000){
-          //             this.totalsal= this.totalsal*30/100
-          //           }else if(1200001 < this.totalsal && this.totalsal < 1600000){
-          //             this.totalsal= this.totalsal*35/100
-          //           }else if( this.totalsal > 1600001){
-          //             this.totalsal= this.totalsal*40/100
-          //           }
-          //           rrr.ee=this.totalsal 
-                  
-          //       }else{
-          //         rrr.ee;
-          //       }
-               
-               
-          //       console.log(rrr.ee);
+                      ress.totleSalery=this.totalsal   
+                      
+                }else{
+                  ress.lta="-";
+                  ress.splallowence="-";
+                  ress.foodAllowence="-"; 
+                  ress.totleSalery='-';                  
+                } 
                 
-          //     })
-             
-          // console.log(this.mergedData);
+              }) 
+                      
+            }           
+          })
           
         })
         
-      })
-      
+      })      
+       
     })
    
   }
@@ -149,7 +112,7 @@ private totalSalval;
 
  updatesaleryData(){
     this.addsalerydata.value.id=this.saleryclickID
-    console.log(this.addsalerydata.value);
+    
   this._serv.postupdatedSaleryDetails(this.addsalerydata.value).subscribe((data)=>{
       console.log("success");
     

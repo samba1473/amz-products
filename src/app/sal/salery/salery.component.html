@@ -13,22 +13,37 @@
         <th>NAME</th>
         <th>JOINING DATE</th>
         <th>Department</th>
-        <th>SALERY</th>
+        <th>Basic</th>
+        <th>LTA</th>
+        <th>SplAllowence</th>
+        <th>FoodAllowence</th>
+        <th>Final SALERY</th>
         <th>Add Salery</th>
+        
     </thead>
     <tbody>
        <tr *ngFor="let data of gerempDetails">
-        <td>{{data.id}}</td>
-        <td>{{data.name}}</td>
-        <td>{{data.joiningDate}}</td>
-        <td>{{data.department}}</td>
-        <td>{{data.ee}}</td>
-        <td>
-            <button  [style.display]="data.ee != null || data.ee != undefined ? 'none':'block'" pButton type="button" label="Add Salery" class="addstudentBtn  p-button-warning" (click)=" openPopup(data.id)" ></button>
-            <button  [style.display]="data.ee === null || data.ee === undefined ? 'none':'block'" pButton type="button" label="Update Salery" class="addstudentBtn   p-button-help"   ></button>
-        </td>
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.joiningDate}}</td>
+            <td>{{data.department}}</td>
+            <td>{{data.basic}}</td>
+            <td>{{data.lta}}</td>
+            <td>{{data.splallowence}}</td>
+            <td>{{data.foodAllowence}}</td>
+            <td>{{data.totleSalery}}</td>
+            <td>
+                <button   *ngIf="data.totleSalery ==='-'" pButton type="button" label="Add Salery" class="addstudentBtn  p-button-warning" (click)=" openPopup(data.id)" ></button>
+                <!-- <button  [style.display]="data.totleSalery === null || data.totleSalery === undefined  ? 'none':'block'" pButton type="button" label="Update Salery" class="addstudentBtn   p-button-help"   ></button> -->
+                <button   *ngIf="data.totleSalery !='-'" pButton type="button" label="Update Salery" class="addstudentBtn   p-button-help"   ></button>
+                
+            </td>
        </tr>
     </tbody>
+    <tfoot>
+        <th [colSpan]=7>Total Sal</th>
+        <th totleSalery >23425l</th>
+    </tfoot>
 </table>
 
 
@@ -59,7 +74,7 @@
         </span>
        
         
-        <p-button  type="submit" class="p-button-text">submit</p-button > 
+        <p-button  type="submit" class="p-button-text mt-4">submit</p-button > 
     </form>
         <!-- <ng-template pTemplate="footer">
             <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Yes" class="p-button-text"></p-button>

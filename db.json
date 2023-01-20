@@ -2030,6 +2030,22 @@
         "Laptop"
       ],
       "id": 14
+    },
+    {
+      "fname": "dfgbt",
+      "mname": "cfdbvcxgv",
+      "lname": "dxfbdcg",
+      "empid": "4567",
+      "gender": "Male",
+      "department": "developer",
+      "dob": "1993-08-24T18:30:00.000Z",
+      "dateofjoining": "2023-01-10T18:30:00.000Z",
+      "myItems": [
+        "System",
+        "Laptop",
+        "Keyboard"
+      ],
+      "id": 15
     }
   ],
   "saleryDetails": [
@@ -2077,35 +2093,19 @@
   "updateedSaleryDetails": [
     {
       "id": 1,
-      "basic": 52525,
-      "hra": 235235,
-      "lta": 235235,
-      "splallowence": 352,
-      "foodAllowence": 235253
+      "basic": 2,
+      "hra": 2,
+      "lta": 2,
+      "splallowence": 2,
+      "foodAllowence": 2
     },
     {
-      "id": 2,
-      "basic": 123456,
-      "hra": 12345,
-      "lta": 1234,
-      "splallowence": 123,
-      "foodAllowence": 1234
-    },
-    {
-      "id": 3,
-      "basic": 3456,
-      "hra": 345678,
-      "lta": 34567,
-      "splallowence": 34567,
-      "foodAllowence": 4567
-    },
-    {
-      "id": 4,
-      "basic": 23456789,
-      "hra": 3456789,
-      "lta": 324567,
-      "splallowence": 2345678,
-      "foodAllowence": 234567
+      "id": 5,
+      "basic": 455333,
+      "hra": 34535,
+      "lta": 34535,
+      "splallowence": 4334,
+      "foodAllowence": 3456
     }
   ]
 }
