@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3 productsTopBrandSection">
+    <h2 class="brandName">Filtered data</h2>    
+</div>
+
+
+<div class=" filteringFormCardDiv">
+    <form class="filterningForm  " [formGroup]="filterFormData" (ngSubmit)="inputfilteData(filterFormData.value)">
+        <div class="row">
+            <div class="col ">
+                <label>From Date</label>
+                <p-calendar  styleClass="w-100" [(ngModel)]="inputStartDate" dateFormat="mm/dd/yy" formControlName="inputstartDate"></p-calendar>
+            </div>
+            <div class="col ">
+                <label>To Date</label>
+                <p-calendar styleClass="w-100" [(ngModel)]="inputEndDate" dateFormat="mm/dd/yy" formControlName="inputendDate"></p-calendar>                
+            </div>
+            <div class="col">
+                <label>Status</label>
+                <p-dropdown  styleClass="filterDropDown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" optionValue="name" formControlName="inputselectDrpdwn"></p-dropdown>
+            </div>
+            <div class="col">
+                <p-button label="Click" type="submit" (onClick)="getFilterData()"  class="mt-4"></p-button>
+            </div>
+        </div>
+      
+       
+      
+
+    </form>
+</div>
+  
+   
+  
+   <p-table *ngIf="tableshow" [value]="filterData" styleClass="filteredDataTable" [scrollable]="true" scrollDirection="both"
+   paginator="true" [rows]="5" [showCurrentPageReport]="true"
+   currentPageReportTemplate="Showing {first} to {last} of {totalRecords}
+   entries" [rowsPerPageOptions]="[5,10,15,20]">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>ParentTestCase</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
+        <tr>
+          <td>{{car.id}}</td>
+          <td>{{car.title}}</td>
+          <td>{{car.stsrtdate}}</td>
+          <td>{{car.endDate}}</td>
+          <td>{{car.status}}</td>
+          <td>{{car.ParentTestCase}}</td>
+        </tr>
+    </ng-template>
+  </p-table>

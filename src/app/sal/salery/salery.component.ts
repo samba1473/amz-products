@@ -83,7 +83,7 @@ private totalSalval;
                       ress.totleSalery=this.totalsal   
                       
                 }else{
-                  ress.lta="-";
+                  ress.lta="-";  
                   ress.splallowence="-";
                   ress.foodAllowence="-"; 
                   ress.totleSalery='-';                  

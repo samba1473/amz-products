@@ -581,6 +581,24 @@
       "mobile": "654789878",
       "status": "false",
       "id": 3
+    },
+    {
+      "fname": "samba",
+      "lname": "g",
+      "email": "sss@gmail.com",
+      "password": "Samba@2022",
+      "mobile": "9160702564",
+      "status": "true",
+      "id": 4
+    },
+    {
+      "fname": "samba",
+      "lname": "g",
+      "email": "ssss@gmail.com",
+      "password": "Samba@2022",
+      "mobile": "69512652",
+      "status": "tgwhjnsm",
+      "id": 5
     }
   ],
   "allUserData": [
@@ -795,7 +813,7 @@
   "studentsData": [
     {
       "id": 1,
-      "Name": "Senpai",
+      "Name": "Senpaisvsdv",
       "Gender": "1",
       "Class": "32",
       "Seat": "15",
@@ -1971,22 +1989,6 @@
   ],
   "empDetails": [
     {
-      "fname": "wsefsweg",
-      "mname": "sadasd",
-      "lname": "asfad",
-      "empid": "25243",
-      "gender": "Male",
-      "department": "tester",
-      "dob": "2001-05-22T18:30:00.000Z",
-      "dateofjoining": "2022-10-31T18:30:00.000Z",
-      "myItems": [
-        "System",
-        "Laptop",
-        "Keyboard"
-      ],
-      "id": 10
-    },
-    {
       "fname": "asfasdf",
       "mname": "asfaf",
       "lname": "asfasf",
@@ -1999,22 +2001,6 @@
         "Keyboard"
       ],
       "id": 12
-    },
-    {
-      "fname": "wetysdg",
-      "mname": "iergu",
-      "lname": "wyisfuhjn",
-      "empid": "78978",
-      "gender": "Male",
-      "department": "designer",
-      "dob": "1995-11-21T18:30:00.000Z",
-      "dateofjoining": "2022-11-08T18:30:00.000Z",
-      "myItems": [
-        "Laptop",
-        "System",
-        "Keyboard"
-      ],
-      "id": 13
     },
     {
       "fname": "sdrs",
@@ -2032,18 +2018,16 @@
       "id": 14
     },
     {
-      "fname": "dfgbt",
-      "mname": "cfdbvcxgv",
-      "lname": "dxfbdcg",
-      "empid": "4567",
+      "fname": "eefaf",
+      "mname": "asf",
+      "lname": "asedfazsf",
+      "empid": "112414",
       "gender": "Male",
       "department": "developer",
-      "dob": "1993-08-24T18:30:00.000Z",
-      "dateofjoining": "2023-01-10T18:30:00.000Z",
+      "dob": "1993-12-30T18:30:00.000Z",
+      "dateofjoining": "2023-01-09T18:30:00.000Z",
       "myItems": [
-        "System",
-        "Laptop",
-        "Keyboard"
+        "Laptop"
       ],
       "id": 15
     }
@@ -2106,6 +2090,176 @@
       "lta": 34535,
       "splallowence": 4334,
       "foodAllowence": 3456
+    },
+    {
+      "id": 2,
+      "basic": 345345,
+      "hra": 3435,
+      "lta": 345345,
+      "splallowence": 34534,
+      "foodAllowence": 345345
     }
-  ]
+  ],
+  "FilteredDateApi": [
+    {
+        "id": 1,
+        "title": "Samba", 
+        "stsrtdate":"12/2/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 2,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 3,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 4,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 5,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 6,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 7,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 8,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 9,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 10,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 11,
+        "title": "Samba", 
+        "stsrtdate":"12/2/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 12,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 13,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 14,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 15,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 16,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 17,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Fail",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 18,
+        "title": "Siva", 
+        "stsrtdate":"1/28/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 19,
+        "title": "Anand", 
+        "stsrtdate":"3/14/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    },
+    {
+        "id": 20,
+        "title": "John", 
+        "stsrtdate":"7/12/2022",
+        "endDate":"12/2/2023",
+        "status":"Pass",
+        "ParentTestCase":"test"
+    }
+]
 }

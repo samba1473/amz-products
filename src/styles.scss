@@ -252,6 +252,34 @@
     // left:75.5% !important
     margin-left: -200px
 }
+ 
+.filteringFormCardDiv{
+    padding: 30px 10px;
+    box-shadow: 1px 2px 10px #c8c8c8a6;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    .filterningForm{         
+        .filterDropDown{
+            width:100%;  
+        }
+        label{
+            font-size: 14px;
+        }
+    }
+}
+.filteredDataTable{
+    table{
+        border: 1px solid #dcdcdc;
+        th{
+            font-size: 14px;
+            padding: 0.75rem 1rem !important;
+        }
+        td{
+            font-size: 14px;
+            padding: 0.75rem 1rem !important;
+        }
+    }
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 

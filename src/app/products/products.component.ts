@@ -105,7 +105,7 @@ export class ProductsComponent implements OnInit ,DoCheck {
               this.productsData = this.productsData.filter(el => {
                 this.duplicate = seen.has(el.id);
                 seen.add(el.id);
-                return !this.duplicate;                
+                return !this.duplicate;
               });
               this.loadSkeleton=false;
           }else if(this.myForm.value.filterProduct.name === 'All Products'){
@@ -114,7 +114,7 @@ export class ProductsComponent implements OnInit ,DoCheck {
             this.loadSkeleton=false;         
           }          
       })       
-    })   
+    })
     this.brandName=this.myForm.value.filterProduct.name;
     this._productSerc.brandName=this.brandName; 
     
