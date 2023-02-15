@@ -36,23 +36,13 @@
    currentPageReportTemplate="Showing {first} to {last} of {totalRecords}
    entries" [rowsPerPageOptions]="[5,10,15,20]">
     <ng-template pTemplate="header">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Status</th>
-          <th>ParentTestCase</th>
+        <tr>          
+          <th *ngFor="let header of getHeaders()">{{header}}</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-car>
-        <tr>
-          <td>{{car.id}}</td>
-          <td>{{car.title}}</td>
-          <td>{{car.stsrtdate}}</td>
-          <td>{{car.endDate}}</td>
-          <td>{{car.status}}</td>
-          <td>{{car.ParentTestCase}}</td>
-        </tr>
+    <ng-template pTemplate="body" let-car>        
+        <tr >           
+            <td *ngFor="let key of getHeaders()">{{car[key]}}</td>
+          </tr>
     </ng-template>
   </p-table>

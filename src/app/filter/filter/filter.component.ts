@@ -67,6 +67,10 @@ export class FilterComponent  implements OnInit{
         
       }) 
       this.filterData=this.comingData
+
+
+
+
      if(this.filterData.length > 0){
       this.tableshow=true
 
@@ -76,6 +80,20 @@ export class FilterComponent  implements OnInit{
   }
   ngOnInit(): void {
     this.EmitDataService.clicked(false)
+ 
+  }
+  getHeaders() {
+    let headers: string[] = [];
+    if(this.filterData) {
+      this.filterData.forEach((value) => {
+        Object.keys(value).forEach((key) => {
+          if(!headers.find((header) => header == key)){
+            headers.push(key); 
+          }
+        })
+      })
+    } 
+    return headers; 
     
   }
 }
